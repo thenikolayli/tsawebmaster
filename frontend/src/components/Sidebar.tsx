@@ -10,7 +10,7 @@ const Sidebar = () => {
     return (
         createPortal(
             <>
-                <button onClick={handleClick} className="flex flex-col p-4 z-10 absolute">
+                <button onClick={handleClick} className="flex flex-col m-4 z-10 absolute">
                     <FiMinus className={clsx("scale-x-150 size-8 text-dcharcoal -mt-4 transition duration-300", {
                         "rotate-45 translate-y-1/4": visible,
                         "rotate-0": !visible,
@@ -28,11 +28,11 @@ const Sidebar = () => {
                     "translate-x-0": visible,
                     "-translate-x-full": !visible,
                 })}>
-                    <ul className="disc-none mt-8">
+                    <ul className="disc-none mt-12">
                         <li><a href="/"
                                className="text-xl font-lato text-dcharcoal hover:text-sbeige transition duration-300">Home</a>
                         </li>
-                        <li><a href="/"
+                        <li><a href="/menu"
                                className="text-xl font-lato text-dcharcoal hover:text-sbeige transition duration-300">Menu</a>
                         </li>
                         <li><a href="/"
