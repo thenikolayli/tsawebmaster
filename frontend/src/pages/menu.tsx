@@ -1,9 +1,9 @@
 import {useEffect} from "react";
 import Sidebar from "../components/Sidebar.tsx";
 
-const Home = () => {
+const Menu = () => {
     useEffect(() => {
-        document.title = "Home"
+        document.title = "HomeTwo"
     }, []);
 
     return (
@@ -14,4 +14,4 @@ const Home = () => {
 }
 
 
-export default Home
+export default Menu
