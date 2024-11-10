@@ -15,6 +15,10 @@ export default {
       "bcitrus": "#FFA726",
       "dcharcoal": "#333333"
     },
+    variants: {
+      backgroundColor: ['hover', 'focus'],
+      borderColor: ['focus', 'hover'],
+    },
     extend: {},
   },
   plugins: [],

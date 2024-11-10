@@ -6,13 +6,25 @@ const Home = () => {
     }, []);
 
     return (
-        <>
-        <h1 className="text-wolive">
-            Hello, World!
-            This is the Home page!
-        </h1>
-        </>
+    <>
+    <label className = "hamburger-menu"> 
+        <input type="checkbox"/>
+    </label>
+    <aside className="sidebar"> 
+        <nav> 
+        <div className="topnav">
+            <a className="hover">Home</a>
+            <a className="hover">Menu</a>
+            <a className="hover">item</a>
+        </div>
+        </nav>
+        </aside>
+    </>
+
+
+
     )
 }
 
-export default Home;
+
+export default Home
