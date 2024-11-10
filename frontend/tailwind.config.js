@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import colors from "tailwindcss/colors";
+import tailwindcss_animated from "tailwindcss-animated";
 
 export default {
   content: [
@@ -21,6 +22,8 @@ export default {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    tailwindcss_animated
+  ],
 }
 

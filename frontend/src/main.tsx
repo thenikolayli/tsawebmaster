@@ -3,9 +3,22 @@ import { createRoot } from 'react-dom/client'
 import "./output.css"
 
 import Home from "./pages/Home.tsx";
+import HomeTwo from "./pages/HomeTwo.tsx";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />,
+    },
+    {
+        path: "/home2",
+        element: <HomeTwo />,
+    }
+])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Home />
+    <RouterProvider router={router} />
   </StrictMode>,
 )
