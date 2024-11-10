@@ -9,6 +9,10 @@ const Home = () => {
     return (
         <>
             <Sidebar />
+            <div className="pt-12 bg-sbeige h-screen text-center">
+                <h1 className="text-xl font-lato">this is lato</h1>
+                <h1 className="text-xl font-playfair">this is playfair</h1>
+            </div>
         </>
     )
 }
