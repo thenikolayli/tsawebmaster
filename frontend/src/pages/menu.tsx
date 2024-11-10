@@ -1,13 +1,13 @@
 import {useEffect} from "react";
 
-const Home = () => {
+const menu = () => {
     useEffect(() => {
         document.title = "Home"
     }, []);
 
     return (
     <>
-    <p> Hi hows it going </p>
+    <p> it worked! </p>
     <label className = "hamburger-menu"> 
         <input type="checkbox"/>
     </label>
@@ -26,4 +26,4 @@ const Home = () => {
 }
 
 
-export default Home
+export default menu
