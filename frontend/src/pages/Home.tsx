@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import Sidebar from "../components/Sidebar.tsx";
+import Topbar from "../components/Topbar.tsx";
 import {InstagramEmbed} from "react-social-media-embed";
 
 const Home = () => {
@@ -15,8 +15,8 @@ const Home = () => {
     return (
         <div className="bg-sbeige ">
             <img className="w-full" src={imageSource} alt="Yummy food" />
-            <Sidebar/>
-            <h1 className="text-4xl font-playfair text-center py-4">Welcome to Olive Delights</h1>
+            <Topbar/>
+            <h1 className="text-4xl font-playfair text-center py-4">Experience tranquility</h1>
             <div className="grid grid-cols-3">
                 <InstagramEmbed className="py-4 flex justify-self-center" url={cat} />
                 <InstagramEmbed className="py-4 flex justify-self-center" url={foodGuy} />
