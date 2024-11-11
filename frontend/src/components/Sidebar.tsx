@@ -35,7 +35,7 @@ const Sidebar = () => {
                         <li><a href="/menu"
                                className="text-xl font-lato text-dcharcoal hover:text-sbeige transition duration-300">Menu</a>
                         </li>
-                        <li><a href="/"
+                        <li><a href="/AboutMe"
                                className="text-xl font-lato text-dcharcoal hover:text-sbeige transition duration-300">About
                             us</a></li>
                     </ul>

@@ -5,7 +5,8 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import "./output.css"
 
 import Home from "./pages/Home.tsx";
-import Menu from "./pages/Menu.tsx";
+import Menu from "./pages/menu.tsx";
+import AboutMe from "./pages/Aboutme.tsx";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         path: "/menu",
         element: <Menu />
     },
+    {
+        path: "/AboutMe",
+        element: <AboutMe />
+    }
 ])
 
 createRoot(document.getElementById('root')!).render(
