@@ -9,13 +9,13 @@ import Menu from "./pages/Menu.tsx";
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/home",
         element: <Home />,
     },
     {
         path: "/menu",
         element: <Menu />
-    }
+    },
 ])
 
 createRoot(document.getElementById('root')!).render(

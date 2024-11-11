@@ -29,7 +29,7 @@ const Sidebar = () => {
                     "-translate-x-full": !visible,
                 })}>
                     <ul className="disc-none mt-12">
-                        <li><a href="/"
+                        <li><a href="/home"
                                className="text-xl font-lato text-dcharcoal hover:text-sbeige transition duration-300">Home</a>
                         </li>
                         <li><a href="/menu"
