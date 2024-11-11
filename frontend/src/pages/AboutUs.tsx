@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import Sidebar from "../components/Sidebar.tsx";
+import Topbar from "../components/Topbar.tsx";
 
 const AboutUs = () => {
     useEffect(() => {
@@ -8,7 +8,7 @@ const AboutUs = () => {
 
     return (
         <div className="h-screen bg-sbeige">
-            <Sidebar />
+            <Topbar />
             <div className="bg-bcitrus/50 py-2">
                 <h1 className="text-4xl font-playfair text-center">About Us</h1>
             </div>
