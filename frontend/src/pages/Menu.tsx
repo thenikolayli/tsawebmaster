@@ -1,5 +1,4 @@
 import {useEffect} from "react";
-import Sidebar from "../components/Sidebar.tsx";
 import Topbar from "../components/Topbar.tsx";
 
 const Menu = () => {
@@ -9,7 +8,6 @@ const Menu = () => {
 
     return (
         <div className="h-screen bg-sbeige">
-            <Sidebar />
             <Topbar />
             <div className="bg-bcitrus/50 py-2">
                 <h1 className="text-4xl font-playfair text-center">Our Menu</h1>
@@ -20,6 +18,5 @@ const Menu = () => {
         </div>
     )
 }
-
 
 export default Menu
