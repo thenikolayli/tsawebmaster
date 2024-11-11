@@ -1,31 +1,53 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import Topbar from "../components/Topbar.tsx";
-import {InstagramEmbed} from "react-social-media-embed";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
     useEffect(() => {
-        document.title = "Home"
+        document.title = "Home";
     }, []);
-
-    const imageSource = "https://d303frzni7t4jb.cloudfront.net/2024_11_10_c6c167b9-052f-4662-97a0-a886ef55e3a4?Expires=1731453702&Signature=DEUqOhbE8l04CAVeCcwyWYyyVv0I5EX~OvEv44HvY-jfvuCJcJB6aTEEKGBSfxapqKe1ep-dGrHdq-4ZrQWoCUdbCJOz3XBcdak7CS5-th1F33sgcITy8tCNRgiclhvfWyHOBQDNDnW0~K2NJkvt9QjBOCJOPkfLPiQMlFZijiUG9GIsD4w1iSExytaYc~AhP2xxefF6vhVivem-83zLio26nGwI7OjD7yTWp8wBRBKH08EOt7C5Bim8BAFj4H5lHfrP81Yu58YR8jmjeGc-S1CgBxVKs3ebDew3sOR-~4ZlYF84e4LqgYsE9~ZjvVy0x1lG8pjaz6MBCLtUG6MNsA__&Key-Pair-Id=KTUQ5O0UDZ92B"
-    const foodGuy = "https://www.instagram.com/p/DCN3Rkdpy0g/"
-    const cat = "https://www.instagram.com/p/DBJN6DZzAnV/?hl=en&img_index=1"
-    const cake = "https://www.instagram.com/p/DCHfg_ZvSPQ/"
+    const logo = "./src/assets/olivedelights-logo.png";
+    const imageSource =
+        "https://d303frzni7t4jb.cloudfront.net/2024_11_11_00dacf18-f5e4-4ec1-b57f-c7e588b57609?Expires=1731474944&Signature=IvjrTyUJFtEMas5UJCwqzKiUWPEShIi-fYnrkRzIByX5ioBh8VsSvTgE~Co6CjOt8MGKFrTcInJNLuZZ1~j7w00dUYGqs8Yph4H9nukG1dnftzeKFfFfUg6jB7XRKszNcaAxxUZpxjsh72Yxne9khqMmKInXnYmR38LNmQp~VA1CJt6IekyxdKoXnh5TlYaguOI~SX8zhJLU-w8A8xHKEa1zIVM4~-M4QRtbggRfq7UDua3zim70R~krOuE61Nb1jKYhO6yDu0~kTEUtsT0lrL2UAhgj-9o6t-OSMsB2qQsJ99ey5zj53UBEHJA0iSvkHH1F5-9e-jSHsVnJZl-Ofg__&Key-Pair-Id=KTUQ5O0UDZ92B";
+    const foodGuy = "https://www.instagram.com/p/DCN3Rkdpy0g/";
+    const cat = "https://www.instagram.com/p/DBJN6DZzAnV/?hl=en&img_index=1";
+    const cake = "https://www.instagram.com/p/DCHfg_ZvSPQ/";
 
     return (
-        <div className="bg-sbeige ">
-            <img className="w-full" src={imageSource} alt="Yummy food" />
-            <Topbar/>
-            <h1 className="text-4xl font-playfair text-center py-4">Experience tranquility</h1>
-            <div className="grid grid-cols-3">
-                <InstagramEmbed className="py-4 flex justify-self-center" url={cat} />
-                <InstagramEmbed className="py-4 flex justify-self-center" url={foodGuy} />
-                <InstagramEmbed className="py-4 flex justify-self-center" url={cake} />
+        <>
+            <Topbar />
+            <div className="bg-sbeige">
+                <div className="relative h-screen">
+                    <img
+                        className="w-23 inset-2 object-contain absolute mx-auto"
+                        style={{transform: 'translateY(200px)'}}
+                        src={logo}
+                        alt="Logo"
+                    />
+
+                    <img
+                        className="z-0 w-full max-h-[calc(100vh-20px)] object-cover pb-[50px]"
+                        src={imageSource}
+                        alt="Yummy food"
+                    />
+                    <div
+                        className="absolute z-30 left-1/2 transform -translate-x-1/2 top-[550px] flex space-x-4">
+                        <button
+                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full shadow-lg hover:bg-sbeige/80 transition duration-300 flex items-center justify-center space-x-2">
+                            <FontAwesomeIcon icon={faClock} className="text-olivegreen fill-current"/>
+                            <span className="text-olivegreen">Reserve</span>
+                        </button>
+                        <button
+                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full shadow-lg hover:bg-sbeige/80 transition duration-300 flex items-center justify-center space-x-2">
+                            <FontAwesomeIcon icon={faArrowRight} className="text-olivegreen fill-current"/>
+                            <span className="text-olivegreen">Order</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-    )
-}
+        </>
+    );
+};
 
-
-
-export default Home
+export default Home;
