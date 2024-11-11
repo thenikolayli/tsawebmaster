@@ -1,14 +1,11 @@
 import {useEffect} from "react";
-import Topbar from "../components/Topbar.tsx";
 
-const Menu = () => {
     useEffect(() => {
         document.title = "Menu"
     }, []);
 
     return (
         <div className="h-screen bg-sbeige">
-            <Topbar />
             <div className="bg-bcitrus/50 py-2">
                 <h1 className="text-4xl font-playfair text-center">Our Menu</h1>
             </div>
@@ -19,4 +16,3 @@ const Menu = () => {
     )
 }
 
-export default Menu
