@@ -5,7 +5,7 @@ const Topbar = () => {
     return (
         createPortal(
             <>
-                <div className="grid-cols-3 space-x-4 rounded-full backdrop-blur-md h-fit p-4 mt-2">
+                <div className="z-30 grid-cols-3 space-x-20 rounded-full backdrop-blur-md h-fit p-4">
                     <a href="/"
                        className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige">Home</a>
                     <a href="/menu"
