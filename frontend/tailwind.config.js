@@ -3,7 +3,8 @@ import colors from "tailwindcss/colors";
 
 export default {
   content: [
-      "./src/**/*.tsx"
+      "./src/**/*.tsx",
+      "./index.html"
   ],
   theme: {
     colors: {
@@ -19,7 +20,12 @@ export default {
       backgroundColor: ['hover', 'focus'],
       borderColor: ['focus', 'hover'],
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        "lato": ["Lato", "sans-serif"],
+        "playfair": ["Playfair Display", "serif"]
+      }
+    },
   },
   plugins: [],
 }

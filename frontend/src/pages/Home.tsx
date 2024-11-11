@@ -1,4 +1,5 @@
 import {useEffect} from "react";
+import Sidebar from "../components/Sidebar.tsx";
 
 const Home = () => {
     useEffect(() => {
@@ -6,22 +7,16 @@ const Home = () => {
     }, []);
 
     return (
-    <>
-    <p> Hi hows it going </p>
-    <label className = "hamburger-menu"> 
-        <input type="checkbox"/>
-    </label>
-    <aside className="sidebar"> 
-        <nav> 
-        <div className="topnav">
-            <a className="hover">Home</a>
-            <a className="hover" href="menu.tsx">Menu</a>
-            <a className="hover">item</a>
+        <div className="h-screen bg-sbeige ">
+            <Sidebar/>
+            <div className="bg-bcitrus/50 py-2">
+                <h1 className="text-4xl font-playfair text-center">Olive Delights</h1>
+            </div>
+            <div className="text-center">
+                <h1 className="text-xl font-lato">this is lato</h1>
+                <h1 className="text-xl font-playfair">this is playfair</h1>
+            </div>
         </div>
-        </nav>
-    </aside>
-    </>
-
     )
 }
 
