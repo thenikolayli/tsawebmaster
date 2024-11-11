@@ -24,21 +24,25 @@ const Sidebar = () => {
                         "rotate-0": !visible,
                     })}/>
                 </button>
-                <div className={clsx("bg-wolive w-fit h-screen z-0 p-4 transition duration-300", {
+                <div className={clsx("bg-wolive w-fit h-screen z-0 p-20 transition duration-300", {
                     "translate-x-0": visible,
                     "-translate-x-full": !visible,
                 })}>
-                    <ul className="disc-none mt-12">
-                        <li><a href="/home"
-                               className="text-xl font-lato text-dcharcoal hover:text-sbeige transition duration-300">Home</a>
-                        </li>
-                        <li><a href="/menu"
-                               className="text-xl font-lato text-dcharcoal hover:text-sbeige transition duration-300">Menu</a>
-                        </li>
-                        <li><a href="/AboutMe"
-                               className="text-xl font-lato text-dcharcoal hover:text-sbeige transition duration-300">About
-                            us</a></li>
-                    </ul>
+                        <ul className="disc-none mt-10">
+                            <div className="space-y-6">
+                                <li><a href="/home"
+                                       className="text-xl font-lato text-sbeige hover:text-dcharcoal transition duration-300">Home</a>
+                                </li>
+                                <li><a href="/menu"
+                                       className="text-xl font-lato text-sbeige hover:text-dcharcoal transition duration-300">Menu</a>
+                                </li>
+                                <li><a href="/AboutMe"
+                                       className="text-xl font-lato text-sbeige hover:text-dcharcoal transition duration-300">About
+                                    us</a></li>
+                            </div>
+
+                        </ul>
+
                 </div>
             </>,
             document.getElementById("sidebar")!
