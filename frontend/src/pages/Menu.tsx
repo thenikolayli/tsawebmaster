@@ -1,6 +1,8 @@
 import {useEffect} from "react";
 import Sidebar from "../components/Sidebar.tsx";
+import Topbar from "../components/Topbar.tsx";
 
+const Menu = () => {
     useEffect(() => {
         document.title = "Menu"
     }, []);
@@ -8,6 +10,7 @@ import Sidebar from "../components/Sidebar.tsx";
     return (
         <div className="h-screen bg-sbeige">
             <Sidebar />
+            <Topbar />
             <div className="bg-bcitrus/50 py-2">
                 <h1 className="text-4xl font-playfair text-center">Our Menu</h1>
             </div>
@@ -19,3 +22,4 @@ import Sidebar from "../components/Sidebar.tsx";
 }
 
 
+export default Menu
