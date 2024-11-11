@@ -30,7 +30,7 @@ const Sidebar = () => {
                 })}>
                         <ul className="disc-none mt-10">
                             <div className="space-y-6">
-                                <li><a href="/home"
+                                <li><a href="/"
                                        className="text-xl font-lato text-sbeige hover:text-dcharcoal transition duration-300">Home</a>
                                 </li>
                                 <li><a href="/menu"
