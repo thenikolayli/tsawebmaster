@@ -16,7 +16,7 @@ const Home = () => {
         <div className="bg-sbeige ">
             <img className="w-full" src={imageSource} alt="Yummy food" />
             <Topbar/>
-            <h1 className="text-4xl font-playfair text-center py-4">Welcome to Olive Delights</h1>
+            <h1 className="text-4xl font-playfair text-center py-4">Experience tranquility</h1>
             <div className="grid grid-cols-3">
                 <InstagramEmbed className="py-4 flex justify-self-center" url={cat} />
                 <InstagramEmbed className="py-4 flex justify-self-center" url={foodGuy} />
