@@ -3,10 +3,10 @@
 **Prompt**: Design a website for a vegan/vegetarian restaurant.  Showcase the restaurant’s approach (such as farm-to-table, preparation processes, and sustainability) to the food served in the restaurant.
 
 ***TASKS***:
-* Arko - Find/make images/videos/media
+* Arko - Find/make images/videos/media, Menu page
 * Arhan - About page
 * Aarav - Add responsive design
-* Nikolay - Menu page, routing
+* Nikolay - Order page, routing
 * Saurish - Homepage, components
 
 Restaurant Name: Olive Delights
