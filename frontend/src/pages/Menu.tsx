@@ -11,7 +11,7 @@ const Menu = () => {
 
     const logo1 = "./src/assets/olivedelights-logo.png";
     const imageSource1 =
-        "https://d303frzni7t4jb.cloudfront.net/2024_11_11_00dacf18-f5e4-4ec1-b57f-c7e588b57609?Expires=1731474944&Signature=IvjrTyUJFtEMas5UJCwqzKiUWPEShIi-fYnrkRzIByX5ioBh8VsSvTgE~Co6CjOt8MGKFrTcInJNLuZZ1~j7w00dUYGqs8Yph4H9nukG1dnftzeKFfFfUg6jB7XRKszNcaAxxUZpxjsh72Yxne9khqMmKInXnYmR38LNmQp~VA1CJt6IekyxdKoXnh5TlYaguOI~SX8zhJLU-w8A8xHKEa1zIVM4~-M4QRtbggRfq7UDua3zim70R~krOuE61Nb1jKYhO6yDu0~kTEUtsT0lrL2UAhgj-9o6t-OSMsB2qQsJ99ey5zj53UBEHJA0iSvkHH1F5-9e-jSHsVnJZl-Ofg__&Key-Pair-Id=KTUQ5O0UDZ92B";
+        "https://d303frzni7t4jb.cloudfront.net/2024_11_11_4fafc591-4891-4e53-948a-20ac41b23acf?Expires=1731539040&Signature=TeAFuFWX74PMOa6DfsOXNPkp6EsNx6kQuwDjUH3Qo79SoEpJ7kWh6T~nb146lS267wg7jRh8NhraCuliDyLa58n~pk04enrwx9IASV7zeoSeRrS17YqsbabWQofk66CTqgRTjeu7B7J1czPzU-wqP9UVgn7YamMlWIvl0XAvjigtEZ8AK~JctosWHqLdwqzw-Fezme~kiPboa5E31HvqWiRHNtMGtScfYzfdSiHToTtLKZ0Jnh-dFoSmB8rQJzo4iW-o1hhNF-yX5vIyd4JcSzj2AyrDJjGMFzpI7ydmLK9gaYIiP8Igy6axbjR53JxCmRKFHpT5PeJFtO5oW6NKaA__&Key-Pair-Id=KTUQ5O0UDZ92B";
 
     return (
         <>
