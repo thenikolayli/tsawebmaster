@@ -1,22 +1,33 @@
-import {createPortal} from "react-dom";
+import { createPortal } from "react-dom";
 
 const Topbar = () => {
-
     return (
         createPortal(
             <>
                 <div className="z-30 grid-cols-3 space-x-20 rounded-full p-4">
-                    <a href="/"
-                       className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige">Home</a>
-                    <a href="/menu"
-                       className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige">Menu</a>
-                    <a href="/aboutus"
-                       className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige">About Us</a>
+                    <a
+                        href="/"
+                        className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige
+                        hover:font-bold hover:text-white hover:shadow-lg hover:shadow-sbeige/50">
+                        Home
+                    </a>
+                    <a
+                        href="/menu"
+                        className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige
+                        hover:font-bold hover:text-white hover:shadow-lg hover:shadow-sbeige/50">
+                        Menu
+                    </a>
+                    <a
+                        href="/aboutus"
+                        className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige
+                        hover:font-bold hover:text-white hover:shadow-lg hover:shadow-sbeige/50">
+                        About Us
+                    </a>
                 </div>
             </>,
             document.getElementById("sidebar")!
         )
-    )
+    );
 }
 
-export default Topbar
+export default Topbar;
