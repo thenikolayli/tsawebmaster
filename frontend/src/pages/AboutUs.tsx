@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Topbar from '../components/Topbar.tsx';
-import './AboutUs.css';
 
 interface Section {
     title: string;
@@ -67,4 +66,4 @@ const AboutUs: React.FC = () => {
     );
 };
 
-export default AboutUs;
+export default AboutUs
