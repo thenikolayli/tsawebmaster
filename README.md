@@ -15,6 +15,18 @@
 3. Go to repo and create pull request to merge your new branch with master branch
 4. If there are no conflicts, merge, if there are conflicts then try to resolve them or let me know
 
+***HOW TO START FRONTEND DEV SERVER***
+1. ****Update repos****
+2. cd frontend
+3. npm install
+4. ****Run vite****
+5. cd frontend
+6. npm run dev
+7. ****Run tailwind compiler****
+8. open a new terminal
+9. cd frontend
+10. npm run windwatch
+
 Restaurant Name: Olive Delights
 
 Fonts:
