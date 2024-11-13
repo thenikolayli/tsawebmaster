@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Topbar from "../components/Topbar.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Footer from "./footer.tsx";
 
 const Home = () => {
     useEffect(() => {
@@ -10,8 +11,8 @@ const Home = () => {
 
     const logo = "./src/assets/olivedelights-logo.png";
     const imageSource =
-        "https://d303frzni7t4jb.cloudfront.net/2024_11_11_00dacf18-f5e4-4ec1-b57f-c7e588b57609?Expires=1731474944&Signature=IvjrTyUJFtEMas5UJCwqzKiUWPEShIi-fYnrkRzIByX5ioBh8VsSvTgE~Co6CjOt8MGKFrTcInJNLuZZ1~j7w00dUYGqs8Yph4H9nukG1dnftzeKFfFfUg6jB7XRKszNcaAxxUZpxjsh72Yxne9khqMmKInXnYmR38LNmQp~VA1CJt6IekyxdKoXnh5TlYaguOI~SX8zhJLU-w8A8xHKEa1zIVM4~-M4QRtbggRfq7UDua3zim70R~krOuE61Nb1jKYhO6yDu0~kTEUtsT0lrL2UAhgj-9o6t-OSMsB2qQsJ99ey5zj53UBEHJA0iSvkHH1F5-9e-jSHsVnJZl-Ofg__&Key-Pair-Id=KTUQ5O0UDZ92B";
-    const logo2 = "./src/assets/logo_test-removebg-preview.png";
+        "https://d303frzni7t4jb.cloudfront.net/2024_11_11_ea507918-4eb8-4a23-8014-8a7b9506daf4?Expires=1731652698&Signature=CRC~hPJf-lrSfjVk7ZwDUFbWHgHSGQkRiQ6LQaeRSmFUckbiJbVa8TpNyHrX2bWenx67TPQ~5Ei6p4hwMFlq~4ECwpXE5nWJzuBy-L2reUdJH9M10DocW9gvCrKREIx7ADXOagaw4-I8C~a1XgUEtCSC86Oc3j-o-8zAI822l39-q70F~f1dRxRyiZiCQZbawjXvXqwad6KYu~B0fMHt1zXZo7EUF3NnCM1ALgrKXAjNIW5uKv1O6-o~JgPV7rvnRRSaT--ZRa~sfMcm1pv-hn76pcl6tauk2npJg0Th5AzAF9MG~kfovKXJ9kotDLrvKwlWhHxwyLSTd5IAdQesUA__&Key-Pair-Id=KTUQ5O0UDZ92B";
+
     return (
         <>
             <Topbar />
@@ -40,28 +41,11 @@ const Home = () => {
                 </div>
             </div>
 
+            <div className="bg-sbeige h-[3000px]"></div>
 
-            <footer className="bg- text-green-950 text-center py-4" style={{ backgroundColor: "#A0B076"}}>
-                <div className="flex items-center justify-center space-x-4">
-                    <img className="h-8 w-8" src={logo2} alt="Logo"/>
-
-
-                    <h3 className="mb-4">USEFUL LINKS</h3>
-                </div>
-                <div className="flex flex-col items-center space-y-4">
-
-
-                    <a href="#" className="hover:underline">Careers</a>
-                    <a href="#" className="hover:underline">About Us</a>
-                    <a href="#" className="hover:underline">Menu</a>
-                    <a href="#" className="hover:underline">Contact</a>
-                    <a href="#" className="hover:underline">FAQ</a>
-                </div>
-            </footer>
+            <Footer />
         </>
     );
 };
-
-//export default Home;
 
 export default Home;

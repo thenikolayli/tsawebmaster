@@ -7,6 +7,9 @@ import "./output.css"
 import Home from "./pages/Home.tsx";
 import Menu from "./pages/Menu.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
+import Careers from "./pages/Careers.tsx";
+import Locations from "./pages/Locations.tsx";
+import Faq from "./pages/Faq.tsx"
 
 const router = createBrowserRouter([
     {
@@ -20,6 +23,18 @@ const router = createBrowserRouter([
     {
         path: "/aboutus",
         element: <AboutUs />
+    },
+    {
+        path: "/careers",
+        element: <Careers/>
+    },
+    {
+        path: "/loco",
+        element: <Locations/>
+    },
+    {
+        path: "/faq",
+        element: <Faq/>
     }
 ])
 

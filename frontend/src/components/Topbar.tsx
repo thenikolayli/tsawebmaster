@@ -1,33 +1,66 @@
 import { createPortal } from "react-dom";
+import { useState, useEffect } from "react";
 
 const Topbar = () => {
-    return (
-        createPortal(
-            <>
-                <div className="z-30 grid-cols-3 space-x-20 rounded-full p-4">
-                    <a
-                        href="/"
-                        className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige
-                        hover:font-bold hover:text-white hover:shadow-lg hover:shadow-sbeige/50">
-                        Home
-                    </a>
-                    <a
-                        href="/menu"
-                        className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige
-                        hover:font-bold hover:text-white hover:shadow-lg hover:shadow-sbeige/50">
-                        Menu
-                    </a>
-                    <a
-                        href="/aboutus"
-                        className="text-xl hover:text-sbeige/50 transition duration-300 font-lato text-sbeige
-                        hover:font-bold hover:text-white hover:shadow-lg hover:shadow-sbeige/50">
-                        About Us
-                    </a>
-                </div>
-            </>,
-            document.getElementById("sidebar")!
-        )
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 830) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    return createPortal(
+        <div className="relative z-30">
+            <div className="absolute top-full left-0 w-full h-16 bg-transparent pointer-events-none"></div>
+
+            <div
+                className={`grid-cols-3 space-x-20 rounded-full p-4 transition-all duration-150 ${scrolled ? 'text-black' : 'text-sbeige'}`}
+            >
+                <a
+                    href="/"
+                    className="text-xl hover:text-sbeige/50 transition-all duration-150 font-lato text-inherit hover:font-bold hover:text-white"
+                >
+                    Home
+                </a>
+                <a
+                    href="/loco"
+                    className="text-xl hover:text-sbeige/50 transition-all duration-150 font-lato text-inherit hover:font-bold hover:text-white"
+                >
+                    Locations
+                </a>
+                <a
+                    href="/menu"
+                    className="text-xl hover:text-sbeige/50 transition-all duration-150 font-lato text-inherit hover:font-bold hover:text-white"
+                >
+                    Menu
+                </a>
+                <a
+                    href="/aboutus"
+                    className="text-xl hover:text-sbeige/50 transition-all duration-150 font-lato text-inherit hover:font-bold hover:text-white"
+                >
+                    About Us
+                </a>
+                <a
+                    href="/careers"
+                    className="text-xl hover:text-sbeige/50 transition-all duration-150 font-lato text-inherit hover:font-bold hover:text-white"
+                >
+                    Careers
+                </a>
+            </div>
+        </div>,
+        document.getElementById("sidebar")!
     );
-}
+};
 
 export default Topbar;

@@ -3,11 +3,10 @@ import Topbar from "../components/Topbar.tsx";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // import {faArrowRight, faClock} from "@fortawesome/free-solid-svg-icons";
-import Footer from "./footer.tsx"
 
-const Menu = () => {
+const Faq = () => {
     useEffect(() => {
-        document.title = "Menu"
+        document.title = "Faq"
     }, []);
 
     const logo1 = "./src/assets/mstarter.png";
@@ -31,9 +30,8 @@ const Menu = () => {
                         alt="Yummy food"
                     />
                 </div>
-            <Footer/>
-        </div>
+            </div>
         </>
     );
 };
-export default Menu
+export default Faq
