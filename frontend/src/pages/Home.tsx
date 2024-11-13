@@ -7,10 +7,11 @@ const Home = () => {
     useEffect(() => {
         document.title = "Home";
     }, []);
+
     const logo = "./src/assets/olivedelights-logo.png";
     const imageSource =
         "https://d303frzni7t4jb.cloudfront.net/2024_11_11_00dacf18-f5e4-4ec1-b57f-c7e588b57609?Expires=1731474944&Signature=IvjrTyUJFtEMas5UJCwqzKiUWPEShIi-fYnrkRzIByX5ioBh8VsSvTgE~Co6CjOt8MGKFrTcInJNLuZZ1~j7w00dUYGqs8Yph4H9nukG1dnftzeKFfFfUg6jB7XRKszNcaAxxUZpxjsh72Yxne9khqMmKInXnYmR38LNmQp~VA1CJt6IekyxdKoXnh5TlYaguOI~SX8zhJLU-w8A8xHKEa1zIVM4~-M4QRtbggRfq7UDua3zim70R~krOuE61Nb1jKYhO6yDu0~kTEUtsT0lrL2UAhgj-9o6t-OSMsB2qQsJ99ey5zj53UBEHJA0iSvkHH1F5-9e-jSHsVnJZl-Ofg__&Key-Pair-Id=KTUQ5O0UDZ92B";
-
+    const logo2 = "./src/assets/logo_test-removebg-preview.png";
     return (
         <>
             <Topbar />
@@ -26,23 +27,41 @@ const Home = () => {
                         src={logo}
                         alt="Logo"
                     />
-                    <div
-                        className="z-20 absolute w-fit h-fit inset-0 mx-auto top-[80%] flex space-x-4">
-                        <button
-                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2">
-                            <FontAwesomeIcon icon={faClock} className="text-olivegreen fill-current"/>
+                    <div className="z-20 absolute w-fit h-fit inset-0 mx-auto top-[80%] flex space-x-4">
+                        <button className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2">
+                            <FontAwesomeIcon icon={faClock} className="text-olivegreen fill-current" />
                             <span className="text-olivegreen">Reserve</span>
                         </button>
-                        <button
-                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2">
-                            <FontAwesomeIcon icon={faArrowRight} className="text-olivegreen fill-current"/>
+                        <button className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2">
+                            <FontAwesomeIcon icon={faArrowRight} className="text-olivegreen fill-current" />
                             <span className="text-olivegreen">Order</span>
                         </button>
                     </div>
                 </div>
             </div>
+
+
+            <footer className="bg- text-green-950 text-center py-4" style={{ backgroundColor: "#A0B076"}}>
+                <div className="flex items-center justify-center space-x-4">
+                    <img className="h-8 w-8" src={logo2} alt="Logo"/>
+
+
+                    <h3 className="mb-4">USEFUL LINKS</h3>
+                </div>
+                <div className="flex flex-col items-center space-y-4">
+
+
+                    <a href="#" className="hover:underline">Careers</a>
+                    <a href="#" className="hover:underline">About Us</a>
+                    <a href="#" className="hover:underline">Menu</a>
+                    <a href="#" className="hover:underline">Contact</a>
+                    <a href="#" className="hover:underline">FAQ</a>
+                </div>
+            </footer>
         </>
     );
 };
+
+//export default Home;
 
 export default Home;
