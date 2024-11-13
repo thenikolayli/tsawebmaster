@@ -22,22 +22,17 @@ const Topbar = () => {
     }, []);
 
     useEffect(() => {
-        // Detect the color change based on scroll or some other condition
         if (scrolled) {
-            // If scrolled and the color is not black, change it to white
             setTextColor('text-white');
         } else {
-            // Otherwise, revert to default
             setTextColor('text-sbeige');
         }
     }, [scrolled]);
 
     return createPortal(
         <div className="relative">
-            {/* Invisible rectangle below the topbar */}
             <div className="absolute top-[64px] left-0 w-full h-16 bg-transparent pointer-events-none z-20"></div>
 
-            {/* Topbar content */}
             <div
                 className={`fixed top-0 left-0 w-full z-30 grid-cols-3 space-x-20 rounded-full p-4 transition-all duration-150 ${textColor}`}
             >
