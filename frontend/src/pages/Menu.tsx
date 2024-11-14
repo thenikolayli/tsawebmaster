@@ -3,7 +3,7 @@ import Topbar from "../components/Topbar.tsx";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // import {faArrowRight, faClock} from "@fortawesome/free-solid-svg-icons";
-import Footer from "./footer.tsx"
+import Footer from "./Footer.tsx"
 
 const Menu = () => {
     useEffect(() => {
