@@ -1,9 +1,9 @@
 import Topbar from "../components/Topbar.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import Footer from "./Footer.tsx";
-import {createPortal} from "react-dom";
+import { createPortal } from "react-dom";
 
 const Home = () => {
     useEffect(() => {
@@ -16,7 +16,7 @@ const Home = () => {
     return createPortal(
         <div>
             <Topbar />
-            <div className="bg-sbeige min-h-screen">
+            <div className="bg-sbeige min-h-screen relative">
                 <div className="absolute w-full max-h-[96%] overflow-hidden aspect-video">
                     <img
                         className="z-0 absolute w-full object-cover"
@@ -30,23 +30,26 @@ const Home = () => {
                     />
                     <div className="z-20 absolute w-fit h-fit inset-0 mx-auto top-[80%] flex space-x-4">
                         <button
-                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2">
-                            <FontAwesomeIcon icon={faClock} className="text-olivegreen fill-current"/>
+                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2 cursor-pointer"
+                        >
+                            <FontAwesomeIcon icon={faClock} className="text-olivegreen fill-current" />
                             <span className="text-olivegreen">Reserve</span>
                         </button>
                         <button
-                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2">
-                            <FontAwesomeIcon icon={faArrowRight} className="text-olivegreen fill-current"/>
+                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2 cursor-pointer"
+                        >
+                            <FontAwesomeIcon icon={faArrowRight} className="text-olivegreen fill-current" />
                             <span className="text-olivegreen">Order</span>
                         </button>
                     </div>
                 </div>
+
             </div>
 
             <div className="bg-sbeige h-[3000px]"></div>
-            <Footer/>
+            <Footer />
         </div>,
-    document.getElementById("root")!
+        document.getElementById("root")!
     );
 };
 
