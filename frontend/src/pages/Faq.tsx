@@ -1,8 +1,8 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import Topbar from "../components/Topbar.tsx";
-import Footer from "./Footer.tsx"
+import Footer from "../components/Footer.tsx";
 
-const Menu = () => {
+const Faq = () => {
     useEffect(() => {
         document.title = "Faq"
     }, []);
@@ -25,10 +25,10 @@ const Menu = () => {
     ];
 
     return (
-        <>
+        <div className="flex flex-col min-h-screen">
             <Topbar />
-            <div className="bg-sbeige">
-                <div className="relative h-screen">
+            <div className="bg-sbeige flex-grow">
+                <div className="relative">
                     <img
                         className="w-23 inset-2 object-contain absolute mx-auto"
                         style={{transform: 'translateY(200px)'}}
@@ -37,27 +37,31 @@ const Menu = () => {
                         className="z-0 w-full max-h-[calc(100vh-20px)] object-cover pb-[50px]"
                         src={imageSource1}
                     />
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex space-x-4 w-full max-w-6xl">
-                        {faqData.map((item, index) => (
-                            <div 
-                                key={index}
-                                className="bg-navy-blue text-white p-6 rounded-lg shadow-lg font-sans flex-1"
-                                style={{
-                                    backgroundColor: 'rgba(4, 59, 92, 0.82)'
-                                }}
-                            >
-                                <h2 className="text-xl font-bold mb-4 font-lato">{item.title}</h2>
-                                <p className="text-base font-light">
-                                    {item.content}
-                                </p>
+                    <div className="bg-sbeige">
+                            <div
+                                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex space-x-4 w-full max-w-6xl">
+                                {faqData.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-navy-blue text-white p-6 rounded-lg shadow-lg font-sans flex-1"
+                                        style={{
+                                            backgroundColor: 'rgba(4, 59, 92, 0.82)'
+                                        }}
+                                    >
+                                        <h2 className="text-xl font-bold mb-4 font-lato">{item.title}</h2>
+                                        <p className="text-base font-light">
+                                            {item.content}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
+
                     </div>
                 </div>
-                <Footer/>
             </div>
-        </>
+            <Footer/>
+        </div>
     );
 };
 
-export default Menu
+export default Faq;

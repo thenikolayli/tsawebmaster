@@ -1,9 +1,9 @@
 import Topbar from "../components/Topbar.tsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 import { useEffect } from "react";
-import Footer from "./Footer.tsx";
+import Footer from "../components/Footer.tsx";
 import { createPortal } from "react-dom";
+import Elements from "../components/Elements.tsx";
 
 const Home = () => {
     useEffect(() => {
@@ -15,7 +15,7 @@ const Home = () => {
 
     return createPortal(
         <div>
-            <Topbar />
+            <Topbar/>
             <div className="bg-sbeige min-h-screen relative">
                 <div className="absolute w-full max-h-[96%] overflow-hidden aspect-video">
                     <img
@@ -28,26 +28,30 @@ const Home = () => {
                         src={logo}
                         alt="Logo"
                     />
-                    <div className="z-20 absolute w-fit h-fit inset-0 mx-auto top-[80%] flex space-x-4">
-                        <button
-                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2 cursor-pointer"
-                        >
-                            <FontAwesomeIcon icon={faClock} className="text-olivegreen fill-current" />
-                            <span className="text-olivegreen">Reserve</span>
-                        </button>
-                        <button
-                            className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2 cursor-pointer"
-                        >
-                            <FontAwesomeIcon icon={faArrowRight} className="text-olivegreen fill-current" />
-                            <span className="text-olivegreen">Order</span>
-                        </button>
-                    </div>
+                    <Elements/>
+                    {/*<div className="z-20 absolute w-fit h-fit inset-0 mx-auto top-[80%] flex space-x-4">*/}
+                    {/*    <button*/}
+                    {/*        className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2 cursor-pointer"*/}
+                    {/*    >*/}
+                    {/*        <FontAwesomeIcon icon={faClock} className="text-olivegreen fill-current" />*/}
+                    {/*        <span className="text-olivegreen">Reserve</span>*/}
+                    {/*    </button>*/}
+                    {/*    <button*/}
+                    {/*        className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2 cursor-pointer"*/}
+                    {/*    >*/}
+                    {/*        <FontAwesomeIcon icon={faArrowRight} className="text-olivegreen fill-current" />*/}
+                    {/*        <span className="text-olivegreen">Order</span>*/}
+                    {/*    </button>*/}
+                    {/*</div>*/}
                 </div>
 
             </div>
 
-            <div className="bg-sbeige h-[3000px]"></div>
-            <Footer />
+            <div className="bg-sbeige h-[3000px]">
+
+            </div>
+
+            <Footer/>
         </div>,
         document.getElementById("root")!
     );
