@@ -39,7 +39,8 @@ Colors:
 * Warm Olive - #A0B076
 * Soft Beige - #F5F5DC
 * Bright Citrus - #FFA726
-* Deep Charcoal - #333333 
+* Deep Charcoal - #333333
+* Teal Blue - #043B5C
 
 **To-Do**:
 
