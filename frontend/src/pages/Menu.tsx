@@ -58,10 +58,8 @@ const Menu = () => {
                                     </button>
                                 </div>
                             </div>
-                            {/* Other vegetarian dishes can follow here */}
                         </div>
                     </section>
-                    {/* Other sections for non-vegetarian dishes and footer */}
                 </div>
                 <Footer />
             </div>
