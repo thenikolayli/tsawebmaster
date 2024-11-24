@@ -2,7 +2,7 @@ import Topbar from "../components/Topbar.tsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import {useEffect} from "react";
-import Footer from "./Footer.tsx";
+import Footer from "../components/Footer.tsx";
 
 const Home = () => {
     useEffect(() => {

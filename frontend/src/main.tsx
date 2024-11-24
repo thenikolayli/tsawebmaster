@@ -9,7 +9,8 @@ import Menu from "./pages/Menu.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import Careers from "./pages/Careers.tsx";
 import Locations from "./pages/Locations.tsx";
-import Faq from "./pages/Faq.tsx"
+import Faq from "./pages/Faq.tsx";
+import Order from "./pages/Order.tsx";
 
 const router = createBrowserRouter([
     {
@@ -29,12 +30,16 @@ const router = createBrowserRouter([
         element: <Careers/>
     },
     {
-        path: "/loco",
+        path: "/locations",
         element: <Locations/>
     },
     {
         path: "/faq",
         element: <Faq/>
+    },
+    {
+        path: "/order",
+        element: <Order/>
     }
 ])
 
