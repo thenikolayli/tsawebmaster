@@ -3,14 +3,28 @@ import axios from "axios";
 import Topbar from "../components/Topbar.tsx";
 import Footer from "../components/Footer.tsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faClock, faDollarSign, faPlus, faPercent, faBasketShopping, faMinus, faEquals} from "@fortawesome/free-solid-svg-icons";
+import {faDollarSign, faBasketShopping} from "@fortawesome/free-solid-svg-icons";
 import {clsx} from "clsx";
-import MenuItemCard from "../components/menu/MenuItemCard.tsx";
-import CostDisplay from "../components/menu/CostDisplay.tsx";
+import MenuItemCard from "../components/order/MenuItemCard.tsx";
+import CostDisplay from "../components/order/CostDisplay.tsx";
 
 const Order = () => {
-    const [pickedItems, setPickedItems] = useState<{ [title: string]: number }>({});
-    const [orderData, setOrderData] = useState<{ [key: string]: any }>({"tipInput": 0, "tipValue": 0, "tipType": "money", "total": 0, "name": ""});
+    const [orderData, setOrderData] = useState<{[key: string]: any}>(() => {
+        const data = localStorage.getItem("orderData")
+        if (data !== "{}") {
+            return JSON.parse(data)
+        } else {
+            return {
+                "tipInput": 0,
+                "tipValue": 0,
+                "tipType": "money",
+                "total": 0,
+                "name": "",
+                "contact": "",
+                "items": {}
+            }
+        }
+    })
     const [imageSources, setImageSources] = useState<string[]>([])
 
     const items: { [key: string]: { [key: string]: any } } = {
@@ -19,49 +33,49 @@ const Order = () => {
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
         "item 2": {
             "category": "appetizers",
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
         "item 3": {
             "category": "appetizers",
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
         "item 4": {
             "category": "main",
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
         "item 5": {
             "category": "main",
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
         "item 6": {
             "category": "main",
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
         "item 7": {
             "category": "main",
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
             "key": 6
         },
         "item 8": {
@@ -69,21 +83,21 @@ const Order = () => {
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
         "item 9": {
             "category": "desserts",
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
         "item 10": {
             "category": "desserts",
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/menu/testImage.webp",
+            "src": "../assets/images/order/testImage.webp",
         },
     }
 
@@ -110,66 +124,92 @@ const Order = () => {
     }, [])
 
     useEffect(() => {
-        updateOrder(null, "total", null)
-    }, [pickedItems]);
+        localStorage.setItem("orderData", JSON.stringify(orderData))
+    }, [orderData]);
 
-
-    const changeItem = (title: string, operation: string) => {
-        const currentItems = {...pickedItems}
-        if (operation === "add") {
-            currentItems[title] = (currentItems[title] || 0) + 1
-
-        } else if (operation === "subtract") {
-            currentItems[title] = currentItems[title] - 1
-        }
-        if (currentItems[title] === 0) {
-            delete currentItems[title]
-        }
-        setPickedItems(currentItems)
-    }
 
     const updateOrder = (event: any, key: string, change?: any) => {
         const currentOrder = {...orderData}
-        if (change) {
+        if (key === "items") {
+            if (change.operation === "add") {
+                currentOrder["items"][change.item] = (currentOrder["items"][change.item] || 0) + 1
+            } else if (change.operation === "subtract") {
+                currentOrder["items"][change.item] -= 1
+            }
+            if (currentOrder["items"][change.item] === 0) {
+                delete currentOrder["items"][change.item]
+            }
+        } else if (change !== undefined) {
             currentOrder[key] = change
         } else if (key !== "total") {
             currentOrder[key] = event.target.value
         }
 
         let total = 0
-        for (const item of Object.entries(pickedItems)) {
-            total += items[item[0]].price * item[1]
+        let orderTime = 0
+        for (const item of Object.entries(currentOrder["items"]) as [string, number][]) {
+            total += items[item[0]]["price"] * item[1]
+            orderTime += items[item[0]]["time"] * item[1]
         }
+
         let tip = 0
-        if (currentOrder["tipInput"] === "") {currentOrder["tipInput"] = 0}
+        if (currentOrder["tipInput"] === "") {currentOrder["tipValue"] = 0}
         if (currentOrder["tipType"] === "money") {
             tip = parseFloat(currentOrder["tipInput"]) || 0
         } else if (currentOrder["tipType"] === "percent") {
             tip = Math.round(total * (parseFloat(currentOrder["tipInput"]) / 100)) || 0
         }
+
         currentOrder["total"] = total + tip
         currentOrder["tipValue"] = tip
+        currentOrder["orderTime"] = orderTime
 
         setOrderData(currentOrder)
+    }
+
+    const placeOrder = async () => {
+        const response = await axios({
+            method: "post",
+            url: "/api/placeorder/",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: {
+                items: orderData["items"],
+                total: orderData["total"],
+                tip: orderData["tipValue"],
+                name: orderData["name"],
+                orderType: orderData["orderType"],
+                orderTime: orderData["orderTime"],
+                contactType: orderData["contactType"],
+                contact: orderData["contact"]
+            }
+        })
+        console.log(response)
     }
 
 
     const mapMenuItems = () => {
         return (
-            categories.map(category =>
-                <div>
-                    <h1 className="text-4xl font-playfair">{category.title}</h1>
-                    <h1 className="text-2xl font-playfair">{category.description}</h1>
-                    <div className="grid grid-cols-4 space-evenly gap-6 mt-2">
-                        {Object.entries(items).map((item, key) => {
-                                if (item[1].category === category.title.toLowerCase()) {
-                                    return (<MenuItemCard item={item[0]} amount={pickedItems[item[0]]} description={item[1].description} imageSource={imageSources[key]} changeItem={changeItem} price={item[1].price} time={item[1].time} />)
+            <div className="mt-2 space-y-4">
+                {categories.map((category, key) =>
+                    <div key={key}>
+                        <h1 className="text-4xl font-playfair">{category.title}</h1>
+                        <h1 className="text-2xl font-playfair">{category.description}</h1>
+                        <div className="grid grid-cols-4 space-evenly gap-6 mt-2">
+                            {Object.entries(items).map((item, key2) => {
+                                    if (item[1].category === category.title.toLowerCase()) {
+                                        return (<MenuItemCard key={key2} item={item[0]} amount={orderData["items"][item[0]]}
+                                                              description={item[1].description}
+                                                              imageSource={imageSources[key2]} updateOrder={updateOrder}
+                                                              price={item[1].price} time={item[1].time}/>)
+                                    }
                                 }
-                            }
-                        )}
+                            )}
+                        </div>
                     </div>
-                </div>
-            )
+                )}
+            </div>
         )
     }
 
@@ -187,16 +227,16 @@ const Order = () => {
                 <h1 className="text-2xl font-playfair">Your order includes</h1>
                 <table className="table-fixed w-1/4">
                     <tbody>
-                        {Object.entries(pickedItems).map(key =>
-                                <tr>
-                                    <th className="text-lg font-lato w-1/4 text-left"><FontAwesomeIcon icon={faBasketShopping}/> {key[1]}</th>
-                                    <th className="text-lg font-lato w-1/3 text-left">{key[0]}</th>
-                                    <th className="text-lg font-lato w-1/3 text-left"><FontAwesomeIcon icon={faDollarSign}/>{key[1] * items[key[0]].price}</th>
+                        {Object.entries(orderData["items"]).map((item, key) => (
+                                <tr key={key}>
+                                    <th className="text-lg font-lato w-1/4 text-left"><FontAwesomeIcon icon={faBasketShopping}/> {item[1]}</th>
+                                    <th className="text-lg font-lato w-1/3 text-left">{item[0]}</th>
+                                    <th className="text-lg font-lato w-1/3 text-left"><FontAwesomeIcon icon={faDollarSign}/>{item[1] * items[item[0]].price}</th>
                                 </tr>
-                        )}
+                        ))}
                     </tbody>
                 </table>
-                <CostDisplay total={orderData["total"]} tipValue={orderData["tipValue"]} tipType={orderData["tipType"]} tipInput={orderData["tipInput"]} updateOrder={updateOrder} />
+                <CostDisplay total={orderData["total"]} orderTime={orderData["orderTime"]} tipValue={orderData["tipValue"]} tipType={orderData["tipType"]} tipInput={orderData["tipInput"]} updateOrder={updateOrder} />
                 <div className="flex mt-2">
                     <h1 className="text-xl font-playfair mr-1">Your order will be</h1>
                     <button onClick={() => updateOrder(null, "orderType", "delivery")}
@@ -245,11 +285,10 @@ const Order = () => {
             <div className="relative bg-sbeige flex justify-center">
                 <div className="mt-[6rem] bg-dcharcoal/20 p-4 rounded-lg w-full lg:w-2/3">
                     <h1 className="text-6xl font-playfair">Order</h1>
-                    <div className="mt-2 space-y-4">
-                        {mapMenuItems()}
-                    </div>
-                    <div className={clsx("mt-8", {"hidden": Object.keys(pickedItems).length === 0})}>
+                    {mapMenuItems()}
+                    <div className={clsx("mt-8", {"hidden": Object.keys(orderData["items"]).length === 0})}>
                         {mapPickedItems()}
+                        <button onClick={placeOrder} className="text-2xl font-playfair mt-2">Place order</button>
                     </div>
                 </div>
             </div>

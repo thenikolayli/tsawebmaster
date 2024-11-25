@@ -7,12 +7,12 @@ interface args {
     amount: number;
     description: string;
     imageSource: string;
-    changeItem: (title: string, operation: string) => void;
+    updateOrder: (event: any, key: string, change?: any) => void;
     price: number;
     time: number;
 }
 
-const MenuItemCard = ({item, amount, description, imageSource, changeItem, price, time}: args) => (
+const MenuItemCard = ({item, amount, description, imageSource, updateOrder, price, time}: args) => (
     <div
         className="relative overflow-hidden rounded-lg shadow-lg px-2 pb-2 pt-1 border-t-sbeige border-t-2">
         <div className="static z-0 flex justify-between">
@@ -36,7 +36,7 @@ const MenuItemCard = ({item, amount, description, imageSource, changeItem, price
             <button
                 className={clsx("opacity-0 hover:opacity-100 transition duration-100 w-full h-full bg-black/30 flex justify-center items-center", {
                     "hidden": amount >= 1
-                })} onClick={() => changeItem(item, "add")}>
+                })} onClick={() => updateOrder(null, "items", {item: item, operation: "add"})}>
                 <FontAwesomeIcon
                     className="absolute size-10 text-white rounded-full bg-black/50 p-2"
                     icon={faPlus}/>
@@ -47,14 +47,14 @@ const MenuItemCard = ({item, amount, description, imageSource, changeItem, price
                 })}>
                 <button
                     className="w-full h-1/2 border-b-2 border-sbeige/50 flex justify-center items-center"
-                    onClick={() => changeItem(item, "add")}>
+                    onClick={() => updateOrder(null, "items", {item: item, operation: "add"})}>
                     <FontAwesomeIcon
                         className="absolute size-10 text-white rounded-full bg-black/50 p-2"
                         icon={faPlus}/>
                 </button>
                 <button
                     className="w-full h-1/2 border-b-2 border-sbeige/50 flex justify-center items-center"
-                    onClick={() => changeItem(item, "subtract")}>
+                    onClick={() => updateOrder(null, "items", {item: item, operation: "subtract"})}>
                     <FontAwesomeIcon
                         className="absolute size-10 text-white rounded-full bg-black/50 p-2"
                         icon={faMinus}/>

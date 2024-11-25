@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import echo
+from .views import placeorder
 
 urlpatterns = [
-    path("echo/", echo)
+    path("placeorder/", placeorder),
 ]

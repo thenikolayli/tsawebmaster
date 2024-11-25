@@ -16,6 +16,9 @@ async def settimer(order_data):
 def placeorder(request):
     current_serializer = CurrentOrderSerializer(data=request.data)
 
+    print(current_serializer.is_valid())
+    print(current_serializer.data)
+
     return Response("ahh")
     # if current_serializer.is_valid():
     #     current_serializer.data["queuePosition"] = CurrentOrder.objects.count() + 1
