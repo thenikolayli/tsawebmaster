@@ -33,7 +33,7 @@ const Topbar = () => {
                         Home
                     </a>
                     <a
-                        href="/loco"
+                        href="/locations"
                         className="text-xl hover:text-sbeige/50 transition-all duration-150 font-lato text-inherit hover:font-bold hover:text-white "
                     >
                         Locations

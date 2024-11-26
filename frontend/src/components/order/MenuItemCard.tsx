@@ -32,7 +32,7 @@ const MenuItemCard = ({item, amount, description, imageSource, updateOrder, pric
             <FontAwesomeIcon className="ml-2" icon={faClock}/> {time} mins
         </h1>
 
-        <div className="absolute z-10 top-0 left-0 w-full h-full">
+        <div className="absolute z-40 top-0 left-0 w-full h-full">
             <button
                 className={clsx("opacity-0 hover:opacity-100 transition duration-100 w-full h-full bg-black/30 flex justify-center items-center", {
                     "hidden": amount >= 1
