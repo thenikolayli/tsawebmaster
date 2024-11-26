@@ -15,13 +15,13 @@ const Elements = () => {
                     className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2 cursor-pointer"
                 >
                     <FontAwesomeIcon icon={faClock} className="text-olivegreen fill-current"/>
-                    <span className="text-olivegreen">Reserve</span>
+                    <a href="reserve/" className="text-olivegreen">Reserve</a>
                 </button>
                 <button
                     className="bg-sbeige text-olivegreen px-6 py-3 rounded-full hover:bg-sbeige/70 transition duration-300 flex items-center justify-center space-x-2 cursor-pointer"
                 >
                     <FontAwesomeIcon icon={faArrowRight} className="text-olivegreen fill-current"/>
-                    <span className="text-olivegreen">Order</span>
+                    <a href="order/" className="text-olivegreen">Order</a>
                 </button>
             </div>
             </div>

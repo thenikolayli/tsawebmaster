@@ -30,30 +30,28 @@ const Footer = () => {
                         </Link>
                         <Link
                             to="/loco"
-                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg"
-                        >
+                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg">
                             Locations
                         </Link>
                         <Link
                             to="/menu"
-                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg"
-                        >
+                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg">
                             Menu
                         </Link>
                         <Link
                             to="/aboutus"
-                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg"
-                        >
+                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg">
                             About Us
                         </Link>
                         <Link
                             to="/careers"
-                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg"
-                        >
+
+                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg">
                             Careers
                         </Link>
                         <Link
                             to="/faq"
+
                             className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg"
                         >
                             FAQ
