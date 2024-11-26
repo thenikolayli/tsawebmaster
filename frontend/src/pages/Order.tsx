@@ -11,7 +11,7 @@ import CostDisplay from "../components/order/CostDisplay.tsx";
 const Order = () => {
     const [orderData, setOrderData] = useState<{[key: string]: any}>(() => {
         const data = localStorage.getItem("orderData")
-        if (data !== "{}") {
+        if (data !== null) {
             return JSON.parse(data)
         } else {
             return {
