@@ -1,5 +1,6 @@
 import Topbar from "../components/Topbar.tsx";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import {useEffect, useState} from "react";
 import Footer from "../components/Footer.tsx";
 import { createPortal } from "react-dom";
