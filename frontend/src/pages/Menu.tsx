@@ -1,70 +1,354 @@
-import { useState, useEffect } from "react";
+import {useEffect} from "react";
 import Topbar from "../components/Topbar.tsx";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+// import {faArrowRight, faClock} from "@fortawesome/free-solid-svg-icons";
 import Footer from "../components/Footer.tsx";
 
 const Menu = () => {
     useEffect(() => {
-        document.title = "Menu";
+        document.title = "Menu"
     }, []);
 
-    const [showFullDescription, setShowFullDescription] = useState(false);
-
-    const logo1 = "./src/assets/images/mstarter.png";
-    const imageSource1 = "./src/assets/gifs/menuscreen.gif";
+    // const logo1 = "";
+    const imageSource1 = "./src/assets/gifs/tsa menu screen.gif"
+    const fillerImage = "./src/assets/images/fillerimage.jpeg"
 
     return (
         <>
-            <Topbar />
-            <div className="bg-sbeige">
-                <div className="relative h-screen">
+            <Topbar/>
+            <div className="bg-sbeige min-h-screen">
+                <div className="absolute w-full overflow-hidden aspect-video">
                     <img
-                        className="w-23 inset-2 object-contain absolute mx-auto"
-                        style={{ transform: 'translateY(200px)' }}
-                        src={logo1}
-                        alt="Logo"
-                    />
-                    <img
-                        className="z-0 w-full max-h-[calc(100vh-20px)] object-cover pb-[50px]"
+                        className="z-0 absolute w-full object-cover"
                         src={imageSource1}
                         alt="Yummy food"
                     />
+                    {/*<img*/}
+                    {/*    className="z-10 absolute w-3/5 inset-0 mx-auto top-[25%]"*/}
+                    {/*    src={logo1}*/}
+                    {/*/>*/}
                 </div>
-                <div className="bg-sbeige h-[3000px]">
-                    <header className="text-center py-12">
-                        <h1 className="text-4xl font-bold text-dark">Crafted to Perfection</h1>
-                        <p className="text-xl text-gray-600 mt-4">Savor the finest dishes, crafted with care and passion</p>
-                    </header>
+            </div>
+            <div className="font-lato bg-sbeige min-h-screen text-center">
 
-                    <section className="py-16 px-4">
-                        <h2 className="text-3xl font-semibold text-center text-dark mb-8">Vegetarian Delights</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                                <img src="./src/assets/images/caprese salad.jpg" alt="Vegetarian Dish 1"
-                                     className="w-full h-48 object-cover" />
-                                <div className="p-4">
-                                    <h3 className="text-xl font-semibold">Caprese Salad</h3>
-                                    <p className="text-gray-600 mt-2">
-                                        {showFullDescription ? (
-                                            "Caprese salad is a fresh and simple Italian dish made with ripe tomatoes, creamy mozzarella cheese, fresh basil leaves, and a drizzle of olive oil. Often seasoned with salt, pepper, and a splash of balsamic vinegar, this light, flavorful salad captures the essence of Italian ingredients. It's a perfect appetizer or side dish, especially during summer when tomatoes are at their peak."
-                                        ) : (
-                                            "Caprese salad is a fresh and simple Italian dish made with ripe tomatoes, mozzarella cheese, fresh basil leaves, and olive oil. It's a light and flavorful dish, perfect for summer..."
-                                        )}
-                                    </p>
-                                    <button
-                                        className="mt-2 text-blue-500 hover:underline"
-                                        onClick={() => setShowFullDescription(!showFullDescription)}
-                                    >
-                                        {showFullDescription ? "Show Less" : "Learn More"}
-                                    </button>
-                                </div>
-                            </div>
+                <strong
+                    className="font-lato underline sticky top-0 flex pt-20 pb-10 z-10 items-center justify-center text-3xl backdrop-blur-lg">Specials</strong>
+
+                <div className="columns-3">
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Caprese Salad</strong>
+
+                        <p className='text-xl'>Fresh tomatoes, mozzarella, basil, and a drizzle of olive oil and
+                            balsamic glaze.
+                        </p>
+
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Pasta
+                            Primavera</strong>
+
+                        <p className='text-xl'>Pasta tossed with a medley of fresh sautéed vegetables like bell peppers,
+                            zucchini, cherry tomatoes, and peas.
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <div className="flex flex-col items-center">
+                            <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
-                    </section>
+                        <div className="px-10 item">
+                            <strong className="text-2xl flex items-center justify-center pb-5">Insalata di Riso</strong>
+
+                            <p className='text-xl'>A cold rice salad with vegetables like peas, tomatoes, and cucumbers,
+                                dressed with olive oil and vinegar.
+                            </p>
+
+                        </div>
+                    </div>
                 </div>
-                <Footer />
+
+
+                <strong
+                    className="font-lato underline sticky top-0 flex pt-20 pb-10 z-10 items-center justify-center text-3xl backdrop-blur-lg">Appetizers</strong>
+                <div className="columns-3">
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+                    <div className="px-10">
+                        <strong className="text-2xl flex items-center justify-center pb-5">Gnocchi al Pesto</strong>
+
+                        <p className='text-xl pb-20 flex items-center justify-center'>Potato gnocchi served with a
+                            flavorful basil pesto sauce made from fresh basil, garlic, pine nuts, Parmesan, and olive
+                            oil.
+                        </p>
+
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+                    <div className="px-10">
+                        <strong className="text-2xl flex items-center justify-center pb-5">Arancini</strong>
+                        <p className='text-xl pb-20 flex items-center justify-center'>Fried rice balls stuffed with
+                            cheese, peas, and sometimes vegetables, then coated in breadcrumbs.
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <div className="flex flex-col items-center">
+                            <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                        </div>
+
+                        <div className="px-10">
+                            <strong className="text-2xl flex items-center justify-center pb-5">Pasta con le
+                                Sarde</strong>
+
+                            <p className='text-xl pb-20 flex items-center justify-center'>A Sicilian classic, often made
+                                vegetarian by omitting the sardines and focusing on fennel, pine nuts, and raisins.
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div className="columns-3">
+                    {/*bottom row no pb*/}
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Fagottini di
+                            Verdure</strong>
+
+                        <p className='text-xl pb-20 flex items-center justify-center'>Pastry pouches filled with mixed
+                            vegetables, like spinach, ricotta, or mushrooms, and baked until golden.
+                        </p>
+
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Torta Salata</strong>
+
+                        <p className='text-xl pb-20 flex items-center justify-center'>A savory pastry filled with
+                            vegetables,
+                            ricotta, and sometimes egg, similar to a quiche.
+                        </p>
+
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Frittelle di
+                            Zucchine</strong>
+
+                        <p className='text-xl pb-20 flex items-center justify-center'>Zucchini fritters made from grated
+                            zucchini, flour, eggs, and Parmesan, then fried to golden perfection.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+                <div className="columns-3">
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+                    <div className="px-10">
+                        <strong className="text-2xl flex items-center justify-center pb-5">Panzanella</strong>
+
+                        <p className='text-xl flex items-center justify-center'>Tuscan bread salad made with cubes of
+                            stale bread, tomatoes, cucumbers, red onions, and fresh basil, dressed with olive oil and
+                            vinegar.
+
+                        </p>
+
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+                    <div className="px-10">
+                        <strong className="text-2xl flex items-center justify-center pb-5">Polenta with
+                            Mushrooms</strong>
+                        <p className='text-xl flex items-center justify-center'>Creamy polenta served with sautéed
+                            mushrooms and a drizzle of olive oil or truffle oil.
+
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <div className="flex flex-col items-center">
+                            <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                        </div>
+
+                        <div className="px-10 item">
+                            <strong className="text-2xl flex items-center justify-center pb-5">Ravioli di Zucca
+                            </strong>
+
+                            <p className='text-xl flex items-center justify-center'>Homemade ravioli stuffed with a
+                                sweet and savory pumpkin filling, often served with sage butter.
+
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <strong
+                    className="font-lato underline sticky top-0 flex pt-20 pb-10 z-10 items-center justify-center text-3xl backdrop-blur-lg">Entrees</strong>
+
+                <div className="columns-3">
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Risotto alla
+                            Milanese</strong>
+
+                        <p className='text-xl pb-20 flex items-center justify-center'>A creamy risotto flavored with
+                            saffron for a rich, golden color and unique taste.
+                        </p>
+
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Lasagna
+                            Vegetariana</strong>
+
+                        <p className='text-xl pb-20 flex items-center justify-center'>A meatless lasagna made with
+                            layers of pasta, ricotta cheese, spinach, and marinara sauce.
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <div className="flex flex-col items-center">
+                            <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                        </div>
+
+                        <div className="px-10 item">
+                            <strong className="text-2xl flex items-center justify-center pb-5">Caponata</strong>
+
+                            <p className='text-xl pb-20 flex items-center justify-center'>A Sicilian eggplant dish
+                                cooked with tomatoes, olives, capers, and vinegar, served as a sweet-and-sour side or
+                                appetizer.
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div className="columns-3">
+                    {/*bottom row no pb*/}
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Polenta with
+                            Gorgonzola</strong>
+
+                        <p className='text-xl pb-20 flex items-center justify-center'>Soft, creamy polenta served with a
+                            rich Gorgonzola cheese sauce.</p>
+
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Risotto ai
+                            Funghi</strong>
+
+                        <p className='text-xl flex items-center justify-center'>A creamy risotto made with wild
+                            mushrooms and flavored with garlic, thyme, and Parmesan cheese.
+
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <div className="flex flex-col items-center">
+                            <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                        </div>
+                        <div className="px-10 item">
+                            <strong className="text-2xl flex items-center justify-center pb-5">Insalata di Finocchi
+                            </strong>
+
+                            <p className='text-xl flex items-center justify-center'>A refreshing salad made with thinly
+                                sliced fennel, oranges, olives, and a light olive oil dressing.
+
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+                <strong
+                    className="font-lato underline sticky top-0 flex pt-20 pb-10 z-10 items-center justify-center text-3xl backdrop-blur-lg">Desserts</strong>
+
+                <div className="columns-3">
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Strawberry gallete</strong>
+
+                        <p className='text-xl pb-20'>A rustic, vegan dessert featuring juicy strawberries wrapped in a flaky, golden crust.</p>
+
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                    </div>
+
+                    <div className="px-10">
+                        <strong className="text-2xl w-full flex items-center justify-center pb-5">Chocolate Truffles</strong>
+
+                        <p className='text-xl pb-20'>Rich, velvety chocolate truffles made from plant-based ingredients.
+
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <div className="flex flex-col items-center">
+                            <img src={fillerImage} alt="Yummy food" className="mx-auto pt-5 pb-5 px-20"/>
+                        </div>
+                        <div className="px-10 item">
+                            <strong className="text-2xl flex items-center justify-center pb-5">Vanilla pudding </strong>
+
+                            <p className='text-xl pb-20'>A creamy, plant-based vanilla pudding with a smooth, luscious texture and a hint of natural vanilla flavor
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <Footer/>
             </div>
         </>
     );
 };
-
 export default Menu;
