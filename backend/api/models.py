@@ -8,7 +8,7 @@ class CurrentOrder(models.Model):
     total = FloatField(default=0)
     tip = FloatField(default=0)
     name = CharField(max_length=100, blank=False, default="")
-    queuePosition = IntegerField(default=0)
+    queuePosition = IntegerField(default=0, blank=True)
     orderType = CharField(default="", max_length=24, blank=False)  # delivery or pickup
     orderTime = FloatField(default=0)
     contactType = CharField(default="", max_length=24, blank=False)

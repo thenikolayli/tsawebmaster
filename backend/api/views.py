@@ -1,3 +1,4 @@
+from asgiref.sync import sync_to_async
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -7,25 +8,26 @@ import asyncio
 
 
 async def settimer(order_data):
-    await asyncio.sleep(order_data.data["time"] * 60)
-    print(f"contact {order_data.data['email']} or {order_data.data['phone']} that order {order_data.data['title']} is complete")
-#     remove CurrentOrder model
+    # await asyncio.sleep(order_data["orderTime"] * 60) # waits for order to finish
+    await asyncio.sleep(3)
+    await sync_to_async(lambda: CurrentOrder.objects.get(id=order_data["id"]).delete())() # deletes CurrentOrder model
+#     notify person that their order is ready for pickup or delivery
 
 @csrf_exempt
 @api_view(['POST'])
 def placeorder(request):
     current_serializer = CurrentOrderSerializer(data=request.data)
 
-    print(current_serializer.is_valid())
-    print(current_serializer.data)
+    if current_serializer.is_valid():
+        queue_position = CurrentOrder.objects.count() + 1
+        current_serializer.validated_data["queuePosition"] = queue_position
+        current_serializer.save()
+        past_serializer = PastOrderSerializer(data=request.data)
 
-    return Response("ahh")
-    # if current_serializer.is_valid():
-    #     current_serializer.data["queuePosition"] = CurrentOrder.objects.count() + 1
-    #     current_serializer.save()
-    #     past_serializer = PastOrderSerializer(data=request.data)
-    #     past_serializer.save()
-    #     asyncio.run(settimer(current_serializer.data))
-    #
-    #     return Response({"data": f"order {current_serializer.data['title']} placed successfully"}, status=200)
-    # return Response({"error": f"issue placing order {current_serializer.data['title']}"}, status=400)
+        if past_serializer.is_valid():
+            past_serializer.save()
+
+        asyncio.run(settimer(current_serializer.data))
+
+        return Response({"data": {"queuePosition": queue_position}}, status=200)
+    return Response({"error": f"issue placing order {current_serializer.data['name']}"}, status=400)

@@ -4,7 +4,7 @@ from .models import CurrentOrder, PastOrder
 class CurrentOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = CurrentOrder
-        fields = ["items", "total", "tip", "name", "orderType", "orderTime", "contactType", "contact"]
+        fields = "__all__"
 
 class PastOrderSerializer(serializers.ModelSerializer):
     class Meta:
