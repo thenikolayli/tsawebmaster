@@ -1,0 +1,5 @@
+Hello {name}!
+
+Your Olive Delights order has been placed. It is {queuePosition} in queue, and will be ready in {orderTime} minutes.
+
+"Savor the Flavor, Share the Joy" - Proudly Presented By Olive Delights

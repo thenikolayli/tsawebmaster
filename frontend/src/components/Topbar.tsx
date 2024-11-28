@@ -132,7 +132,7 @@ const Topbar = () => {
                 </div>
             </div>
         </div>,
-        document.getElementById("top bar")!
+        document.getElementById("topbar")!
     );
 };
 

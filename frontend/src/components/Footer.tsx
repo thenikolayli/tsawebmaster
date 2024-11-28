@@ -62,7 +62,7 @@ const Footer = () => {
                 <div className="flex flex-col text-sbeige items-center md:items-start">
                     <h3 className="text-lg font-semibold mb-4">Connect</h3>
                     <p className="text-sm text-gray-400">Phone: (425)-753-1511</p>
-                    <p className="text-sm text-gray-400">Email: info@olivedelights.com</p>
+                    <p className="text-sm text-gray-400">Email: olivedelights.wa@gmail.com</p>
                     <div className="flex space-x-4 mt-4">
                         <a
                             href="#"
