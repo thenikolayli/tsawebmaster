@@ -3,7 +3,7 @@ import Topbar from "../components/Topbar.tsx";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // import {faArrowRight, faClock} from "@fortawesome/free-solid-svg-icons";
-import Footer from "./Footer.tsx"
+import Footer from "../components/Footer.tsx";
 
 const Menu = () => {
     useEffect(() => {
@@ -12,7 +12,7 @@ const Menu = () => {
 
     // const logo1 = "";
     const imageSource1 = "./src/assets/gifs/tsa menu screen.gif"
-    const fillerImage = "./src/assets/images/fillerimage.jpeg"
+    const fillerImage1 = "./src/assets/images/menuimages/fillerimage.jpeg"
 
     return (
         <>
@@ -345,7 +345,6 @@ const Menu = () => {
                         </div>
                     </div>
                 </div>
-
                 <Footer/>
             </div>
         </>
