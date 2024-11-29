@@ -11,6 +11,7 @@ import Careers from "./pages/Careers.tsx";
 import Locations from "./pages/Locations.tsx";
 import Faq from "./pages/Faq.tsx";
 import Order from "./pages/Order.tsx";
+import Reservations from "./pages/Reservations.tsx";
 
 const router = createBrowserRouter([
     {
@@ -40,11 +41,15 @@ const router = createBrowserRouter([
     {
         path: "/order",
         element: <Order/>
+    },
+    {
+        path: "/reservations",
+        element: <Reservations/>
     }
 ])
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
+    <StrictMode>
+        <RouterProvider router={router} />
+    </StrictMode>,
 )
