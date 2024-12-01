@@ -41,6 +41,7 @@ Colors:
 * Bright Citrus - #FFA726
 * Deep Charcoal - #333333
 * Teal Blue - #043B5C
+* Scotch Mist - #EFEFC8
 
 **To-Do**:
 
