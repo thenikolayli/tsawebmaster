@@ -13,7 +13,7 @@ const roles = [
 ];
 
 const benefits = [
-    { title: "Competitive Pay", description: "We value your hard work and dedication, offering a salary that reflects your skills and experience.", icon: "💰" },
+    { title: "Above Average Pay", description: "We value your hard work and dedication, offering a salary that reflects your skills and experience.", icon: "💰" },
     { title: "Flexible Scheduling", description: "Balance your work and personal life with our adaptable scheduling options.", icon: "⏰" },
     { title: "Growth Opportunities", description: "We invest in our team's development, providing pathways for career advancement.", icon: "🌱" },
 ];
