@@ -8,7 +8,6 @@ import Home from "./pages/Home.tsx";
 import Menu from "./pages/Menu.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import Careers from "./pages/Careers.tsx";
-import Locations from "./pages/Locations.tsx";
 import Faq from "./pages/Faq.tsx";
 import Order from "./pages/Order.tsx";
 import Reservations from "./pages/Reservations.tsx";
@@ -29,10 +28,6 @@ const router = createBrowserRouter([
     {
         path: "/careers",
         element: <Careers/>
-    },
-    {
-        path: "/locations",
-        element: <Locations/>
     },
     {
         path: "/Faq",

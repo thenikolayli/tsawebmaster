@@ -267,9 +267,9 @@ const Order = () => {
 
     return (
         <>
-            {/*<Topbar/>*/}
+            <Topbar/>
             <div className="relative bg-sbeige flex justify-center">
-                <div className="mt-[6rem] bg-dcharcoal/20 p-4 rounded-lg w-full lg:w-2/3">
+                <div className="my-[6rem] bg-dcharcoal/20 p-4 rounded-lg w-full lg:w-2/3">
                     <h1 className="text-6xl font-playfair">Order</h1>
                     {mapMenuItems()}
                     <div className={clsx("mt-8", {"hidden": Object.keys(orderData["items"]).length === 0})}>
@@ -278,7 +278,7 @@ const Order = () => {
                     </div>
                 </div>
             </div>
-            {/*<Footer />*/}
+            <Footer />
         </>
     )
 }
