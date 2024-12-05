@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
-import reservationGif from "../assets/gifs/reservations.gif";
+// import reservationGif from "../assets/gifs/reservations.gif";
+import reservationGif from "../assets/gifs/Careers.gif"
 
 const FORM_BACKGROUND_COLOR = "#EFEFC8";
 const FORM_SCALE = 1.25;
