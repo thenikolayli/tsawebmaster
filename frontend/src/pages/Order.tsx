@@ -20,7 +20,7 @@ const Order = () => {
                 "tipType": "money",
                 "total": 0,
                 "name": "",
-                "contact": "",
+                "email": "",
                 "items": {}
             }
         }
@@ -149,7 +149,7 @@ const Order = () => {
         let orderTime = 0
         for (const item of Object.entries(currentOrder["items"]) as [string, number][]) {
             total += items[item[0]]["price"] * item[1]
-            orderTime += items[item[0]]["time"] * item[1]
+            orderTime += items[item[0]]["time"]
         }
 
         let tip = 0
@@ -181,8 +181,8 @@ const Order = () => {
                 name: orderData["name"],
                 orderType: orderData["orderType"],
                 orderTime: orderData["orderTime"],
-                contactType: orderData["contactType"],
-                contact: orderData["contact"]
+                currentTime: new Date().toLocaleTimeString(),
+                email: orderData["email"]
             }
         })
         console.log(response)
@@ -254,23 +254,9 @@ const Order = () => {
                     </button>
                 </div>
                 <div className="flex mt-2">
-                <h1 className="text-xl font-playfair mr-1">Your</h1>
-                    <button onClick={() => updateOrder(null, "contactType", "email")}
-                            className={clsx("text-xl font-playfair transition duration-300", {
-                                "text-wolive hover:text-bcitrus": orderData["contactType"] !== "email",
-                                "text-bcitrus": orderData["contactType"] === "email",
-                            })}>Email
-                    </button>
-                    <h1 className="text-xl font-playfair mx-1">/</h1>
-                    <button onClick={() => updateOrder(null, "contactType", "phoneNumber")}
-                            className={clsx("text-xl font-playfair transition duration-300", {
-                                "text-wolive hover:text-bcitrus": orderData["contactType"] !== "phoneNumber",
-                                "text-bcitrus": orderData["contactType"] === "phoneNumber",
-                            })}>Phone number
-                    </button>
-                    <h1 className="text-xl font-playfair mx-1">is</h1>
-                    <input type="text" value={orderData["contact"]} placeholder={"###"} onChange={(event) => updateOrder(event, "contact")} className={clsx("text-xl font-playfair placeholder-wolive hover:opacity-65 transition duration-300 bg-transparent outline-none", {
-                        "text-wolive hover:text-bcitrus": orderData["contact"] === "",
+                <h1 className="text-xl font-playfair mr-1">Your email is</h1>
+                    <input type="text" value={orderData["email"]} placeholder={"###"} onChange={(event) => updateOrder(event, "email")} className={clsx("text-xl font-playfair placeholder-wolive hover:opacity-65 transition duration-300 bg-transparent outline-none", {
+                        "text-wolive hover:text-bcitrus": orderData["email"] === "",
                         "text-bcitrus": orderData["contact"] !== ""
                     })}/>
                 </div>

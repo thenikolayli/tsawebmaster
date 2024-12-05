@@ -1,0 +1,5 @@
+Hello {name}!
+
+Your Olive Delights order is ready for pickup!
+
+"Savor the Flavor, Share the Joy" - Proudly Presented By Olive Delights

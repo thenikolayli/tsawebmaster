@@ -7,7 +7,7 @@ const Faq = () => {
         document.title = "Faq"
     }, []);
 
-    const imageSource1 = "https://d303frzni7t4jb.cloudfront.net/2024_11_17_304b6b9c-7ade-49cb-9f2a-ebb6a6af2fd4?Expires=1732056359&Signature=AViyyDJ6NW462fCqlam4D-VKz21Mdqz8HS4uNQFQ3L74xxEXgfSWd0QR5Z~zsVUqDI5qNr0VoTCGaiRhczbUOP~bJQCJ8dmo89QtJ3dcAcuPvTsvkpmCxJRYgkiBqB~pEtJBFEtxRojr3hyyEgeoFyvR-0BD4AgQgMANTq-JI5878Jc-RgFHJ8-xmez3e9PihSlXNCa56fRdZnR7wVmhqL5DZ~nxKF5xym4umoqvNaKbboKQ4X9pW8ktOnSLdDgKF-URBJodKkNks9dxJ12KQWtDyXx3uJfFKzsiS5aZ4v1kWFTA~uO0z6D-uZjDc4fCIyqKwc5ANOdyNAeSPNpv6Q__&Key-Pair-Id=KTUQ5O0UDZ92B"
+    const imageSource1 = "./src/assets/gifs/faq-page.gif"
 
     const faqData = [
         {

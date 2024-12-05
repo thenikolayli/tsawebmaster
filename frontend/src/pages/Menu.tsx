@@ -178,8 +178,6 @@ const Menu = () => {
                             <p className='text-xl flex items-center justify-center overflow-hidden max-w-80 mx-auto'>Homemade
                                 ravioli stuffed with a
                                 sweet and savory pumpkin filling, often served with sage butter.
-
-
                             </p>
 
                         </div>
@@ -196,7 +194,6 @@ const Menu = () => {
                     <div className="px-10">
                         <strong className="text-2xl w-full flex items-center justify-center pb-5">Fagottini di
                             Verdure</strong>
-
                         <p className='text-xl pb-20 flex items-center justify-center overflow-hidden max-w-80 mx-auto'>Pastry
                             pouches filled with mixed
                             vegetables, like spinach, ricotta, or mushrooms, and baked until golden.
@@ -216,7 +213,6 @@ const Menu = () => {
                         <p className='text-xl flex items-center justify-center overflow-hidden max-w-80 mx-auto'>Creamy
                             polenta served with sautéed
                             mushrooms and a drizzle of olive oil or truffle oil.
-
                         </p>
 
                     </div>
@@ -229,7 +225,6 @@ const Menu = () => {
                     <div className="px-10">
                         <strong className="text-2xl w-full flex items-center justify-center pb-5">Frittelle di
                             Zucchine</strong>
-
                         <p className='text-xl pb-20 flex items-center justify-center overflow-hidden max-w-80 mx-auto'>Zucchini
                             fritters made from grated
                             zucchini, flour, eggs, and Parmesan, then fried to golden perfection.
@@ -351,8 +346,6 @@ const Menu = () => {
                     <div className="px-10">
                         <strong className="text-2xl w-full flex items-center justify-center pb-20">Frittelle di
                             Zucchine</strong>
-
-
                     </div>
                 </div>
                 <div className="columns-2 lg:hidden">
@@ -563,6 +556,7 @@ const Menu = () => {
 
                             <p className='text-xl flex items-center justify-center overflow-hidden max-w-80 mx-auto pb-20 min-[300px]:max-lg:hidden'>A
                                 refreshing salad made with thinly
+
                                 sliced fennel, oranges, olives, and a light olive oil dressing.
 
                             </p>
@@ -615,7 +609,6 @@ const Menu = () => {
                         <div className="px-10 item">
                             <strong className="text-2xl flex items-center justify-center pb-5">Vanilla
                                 pudding </strong>
-
                             <p className='text-xl overflow-hidden max-w-80 mx-auto pb-20'>A creamy, plant-based
                                 vanilla
                                 pudding with a smooth, luscious texture and a hint of natural vanilla flavor.

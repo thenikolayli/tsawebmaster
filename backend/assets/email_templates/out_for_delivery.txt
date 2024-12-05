@@ -1,0 +1,5 @@
+Hello {name}!
+
+Your Olive Delights order is out for delivery, it be delivered in around {deliveryWaitTime} minutes.
+
+"Savor the Flavor, Share the Joy" - Proudly Presented By Olive Delights
