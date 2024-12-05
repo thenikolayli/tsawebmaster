@@ -42,7 +42,7 @@ const Home = () => {
                     <p className="text-xl text-gray-600 mt-4">Savor the finest dishes, crafted with care and passion</p>
                 </header>
 
-                <section className="relative z-30 py-16 px-4">
+                <section className="relative z-20 py-16 px-4">
                     <div className="z-20 absolute grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                             <img src="./src/assets/images/caprese salad.jpg" alt="Vegetarian Dish 1"
