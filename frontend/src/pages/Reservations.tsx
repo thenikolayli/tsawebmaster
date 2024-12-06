@@ -4,14 +4,6 @@ import Footer from "../components/Footer";
 // import reservationGif from "../assets/gifs/reservations.gif";
 import reservationGif from "../assets/gifs/Careers.gif"
 
-const FORM_BACKGROUND_COLOR = "#EFEFC8";
-const FORM_SCALE = 1.25;
-const TEXT_SIZE = "text-3xl";
-const TEXT_COLOR = "text-black";
-const BUTTON_COLOR = "bg-brown-700";
-const BUTTON_HOVER_COLOR = "hover:bg-brown-800";
-const Y_OFFSET = 0;
-
 const Reservations = () => {
     useEffect(() => {
         document.title = "Reservations";
@@ -28,14 +20,10 @@ const Reservations = () => {
                         alt="Background"
                     />
                     <div
-                        className="absolute inset-0 flex justify-center items-center"
-                        style={{ transform: `translateY(${Y_OFFSET}px) scale(${FORM_SCALE})` }}
-                    >
+                        className="absolute inset-0 flex justify-center items-center scale-[1.20]">
                         <div
-                            className="max-w-md mx-auto p-6 rounded-lg shadow-lg"
-                            style={{ backgroundColor: FORM_BACKGROUND_COLOR }}
-                        >
-                            <h2 className={`${TEXT_SIZE} font-playfair text-center mb-8 ${TEXT_COLOR}`}>
+                            className="max-w-md mx-auto p-6 rounded-lg shadow-lg bg-sbeige">
+                            <h2 className={`text-3xl font-playfair text-center mb-8`}>
                                 Reservations
                             </h2>
                             <form>
@@ -141,7 +129,7 @@ const Reservations = () => {
                                 <div className="flex justify-center mt-6">
                                     <button
                                         type="submit"
-                                        className={`text-black ${BUTTON_COLOR} ${BUTTON_HOVER_COLOR} focus:ring-4 focus:outline-none focus:ring-brown-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5`}
+                                        className={`hover:shadow-xl focus:ring-4 focus:outline-none focus:ring-brown-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 transition duration-100`}
                                     >
                                         Reserve Table
                                     </button>

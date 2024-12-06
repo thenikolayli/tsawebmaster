@@ -121,7 +121,7 @@ const Careers = () => {
                 </p>
             </section>
 
-            <section className="px-6 md:px-12 lg:px-24" id="careers">
+            <section className="px-6 md:px-12 lg:px-24  py-6" id="careers">
                 <h2 className="text-3xl font-semibold text-center text-olivegreen mb-8 font-playfair">Open Positions</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 font-lato">
                     {roles.map(({title, description, key}) => (
@@ -142,8 +142,6 @@ const Careers = () => {
                     </div>
                 </div>
             </section>
-            <div>mt-6</div>
-
             <Footer />
         </div>
     );
