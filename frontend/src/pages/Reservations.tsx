@@ -1,44 +1,78 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
 // import reservationGif from "../assets/gifs/reservations.gif";
 import reservationGif from "../assets/gifs/Careers.gif"
 import axios from "axios";
+import Context from "../Utils/Context.tsx";
 
 const Reservations = () => {
     useEffect(() => {
         document.title = "Reservations";
     }, []);
+    const {csrfToken} = useContext(Context);
+    const [apiResponse, setApiResponse] = useState("");
 
-    const [reservationData, setReservationData] = useState<{[key: string]: any}>()
+    const [reservationData, setReservationData] = useState<{[key: string]: any}>(() => {
+        if (localStorage.getItem("reservationData")) {
+            return JSON.parse(localStorage.getItem("reservationData")!);
+        } else {
+            return {
+                "first_name": "",
+                "last_name": "",
+                "email": "",
+                "reservation_date": "",
+                "reservation_time": "",
+                "party_size": 0
+            };
+        }
+    })
 
-    const updateReservationData = (event) => {
+    useEffect(() => {
+        localStorage.setItem("reservationData", JSON.stringify(reservationData));
+    }, [reservationData]);
+
+    const updateReservationData = (event: any) => {
         let newReservationData = {...reservationData}
         newReservationData[event.target.id] = event.target.value;
 
         setReservationData(newReservationData);
     }
 
-    const placeReservation = async (event) => {
+    const placeReservation = async (event: any) => {
+        event.preventDefault();
         try {
             const response = await axios({
                 method: "POST",
-                url: "/api/reserve/",
+                url: "/api/placereservation/",
                 headers: {
                     "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken,
                 },
                 data: {
                     "name": reservationData!["first_name"] + " " + reservationData!["last_name"],
                     "email": reservationData!["email"],
-                    "party_size": reservationData!["party_size"],
-                    "reservation_date": reservationData!["reservation_date"],
-                    "reservation_time": reservationData!["reservation_time"],
+                    "partySize": reservationData!["party_size"],
+                    "reservationDateTime": reservationData["reservation_date"] + " " + reservationData["reservation_time"],
                 }
             })
 
-            console.log(response)
+            if (response.status === 200) {
+                setApiResponse("Reservation places successfully");
+                localStorage.removeItem("reservationData");
+                setReservationData({"first_name": "",
+                    "last_name": "",
+                    "email": "",
+                    "reservation_date": "",
+                    "reservation_time": "",
+                    "party_size": 0})
+            }
         } catch (error: any) {
-            console.log(error)
+            let errorMessage = "";
+            for (const specificError of Object.values(error.response.data.error) as string[]) {
+                errorMessage += specificError[0] + "\n"
+            }
+            setApiResponse(errorMessage);
         }
     }
 
@@ -59,16 +93,17 @@ const Reservations = () => {
                             <h2 className={`text-3xl font-playfair text-center mb-8`}>
                                 Reservations
                             </h2>
-                            <form>
+                            <form onSubmit={placeReservation}>
                                 <div className="grid md:grid-cols-2 md:gap-6">
                                     <div className="relative z-0 w-full mb-5 group">
                                         <input
                                             type="text"
                                             id="first_name"
-                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none focus:outline-none focus:ring-0  peer"
+                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none outline-none   peer"
                                             placeholder=" "
                                             required
                                             onChange={(event) => updateReservationData(event)}
+                                            value={reservationData["first_name"]}
                                         />
                                         <label
                                             htmlFor="first_name"
@@ -80,10 +115,11 @@ const Reservations = () => {
                                         <input
                                             type="text"
                                             id="last_name"
-                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none focus:outline-none focus:ring-0  peer"
+                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none outline-none   peer"
                                             placeholder=" "
                                             required
                                             onChange={(event) => updateReservationData(event)}
+                                            value={reservationData["last_name"]}
                                         />
                                         <label
                                             htmlFor="last_name"
@@ -95,11 +131,12 @@ const Reservations = () => {
                                 <div className="relative z-0 w-full mb-5 group">
                                     <input
                                         type="email"
-                                        id="email_address"
-                                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none focus:outline-none focus:ring-0  peer"
+                                        id="email"
+                                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none outline-none   peer"
                                         placeholder=" "
                                         required
                                         onChange={(event) => updateReservationData(event)}
+                                        value={reservationData["email"]}
                                     />
                                     <label
                                         htmlFor="email_address"
@@ -112,9 +149,10 @@ const Reservations = () => {
                                         <input
                                             type="date"
                                             id="reservation_date"
-                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none focus:outline-none focus:ring-0  peer"
+                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none outline-none   peer"
                                             required
                                             onChange={(event) => updateReservationData(event)}
+                                            value={reservationData["reservation_date"]}
                                         />
                                         <label
                                             htmlFor="reservation_date"
@@ -126,9 +164,10 @@ const Reservations = () => {
                                         <input
                                             type="time"
                                             id="reservation_time"
-                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none focus:outline-none focus:ring-0  peer"
+                                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none outline-none   peer"
                                             required
                                             onChange={(event) => updateReservationData(event)}
+                                            value={reservationData["reservation_time"]}
                                         />
                                         <label
                                             htmlFor="reservation_time"
@@ -141,11 +180,12 @@ const Reservations = () => {
                                     <input
                                         type="number"
                                         id="party_size"
-                                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none focus:outline-none focus:ring-0  peer"
+                                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-dcharcoal appearance-none outline-none  peer"
                                         placeholder=" "
                                         required
                                         min="1"
                                         onChange={(event) => updateReservationData(event)}
+                                        value={reservationData["party_size"]}
                                     />
                                     <label
                                         htmlFor="party_size"
@@ -153,12 +193,13 @@ const Reservations = () => {
                                         Party Size
                                     </label>
                                 </div>
-                                <div className="flex justify-center mt-6">
+                                <div className="flex flex-col justify-center mt-6">
                                     <button
                                         type="submit"
-                                        className={`hover:shadow-xl focus:ring-4 focus:outline-none focus:ring-brown-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 transition duration-100`}>
+                                        className={`hover:shadow-xl outline-none  font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 transition duration-100`}>
                                         Reserve Table
                                     </button>
+                                    <h1 className="font-lato text-md mt-2">{apiResponse}</h1>
                                 </div>
                             </form>
                         </div>

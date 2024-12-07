@@ -1,0 +1,5 @@
+Hello {first_name}!
+
+Your Olive Delights reservation for {date} at {time} has been placed. See you there!
+
+"Savor the Flavor, Share the Joy" - Proudly Presented By Olive Delights

@@ -10,9 +10,8 @@ import CostDisplay from "../components/order/CostDisplay.tsx";
 
 const Order = () => {
     const [orderData, setOrderData] = useState<{[key: string]: any}>(() => {
-        const data = localStorage.getItem("orderData")
-        if (data !== null) {
-            return JSON.parse(data)
+        if (localStorage.getItem("orderData") !== null) {
+            return JSON.parse(localStorage.getItem("orderData")!)
         } else {
             return {
                 "tipInput": 0,
@@ -181,7 +180,6 @@ const Order = () => {
                 name: orderData["name"],
                 orderType: orderData["orderType"],
                 orderTime: orderData["orderTime"],
-                currentTime: new Date().toLocaleTimeString(),
                 email: orderData["email"]
             }
         })

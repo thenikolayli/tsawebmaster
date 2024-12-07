@@ -1,0 +1,5 @@
+Hello {first_name}!
+
+Your reservation at Olive Delights is coming up!
+
+"Savor the Flavor, Share the Joy" - Proudly Presented By Olive Delights

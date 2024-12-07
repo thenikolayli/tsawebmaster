@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost"]
 
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 
 # Application definition
 
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "api"
+    "api",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
