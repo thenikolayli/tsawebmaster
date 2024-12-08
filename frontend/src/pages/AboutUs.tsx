@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import Topbar from '../components/Topbar.tsx';
 
 const AboutUs = () => {
@@ -34,8 +34,10 @@ const AboutUs = () => {
                 {sections.map((section) => (
                     <div className="relative aspect-video w-full h-auto overflow-hidden">
                         <img className="absolute z-0 w-full" src={section.imageSource} alt={section.title}/>
-                        <h1 className="absolute z-20 top-[40%] inset-x-0 mx-auto w-fit font-playfair text-2xl text-wolive p-4 bg-black/50 rounded-full">{section.title}</h1>
-                        <h1 className="absolute z-10 top-[40%] inset-x-0 mx-auto w-1/2 font-playfair text-center text-xl text-wolive p-4 bg-black/50 rounded-2xl">{section.text}</h1>
+                        <div className="absolute z-10 top-[40%] flex flex-col items-center">
+                            <h1 className="w-fit font-playfair text-2xl text-wolive p-4 bg-black/50 rounded-t-2xl">{section.title}</h1>
+                            <h1 className="w-1/2 font-playfair text-center text-xl text-wolive p-4 bg-black/50 rounded-2xl">{section.text}</h1>
+                        </div>
                     </div>
                 ))}
             </div>

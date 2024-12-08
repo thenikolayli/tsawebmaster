@@ -10,9 +10,8 @@ import CostDisplay from "../components/order/CostDisplay.tsx";
 
 const Order = () => {
     const [orderData, setOrderData] = useState<{[key: string]: any}>(() => {
-        const data = localStorage.getItem("orderData")
-        if (data !== null) {
-            return JSON.parse(data)
+        if (localStorage.getItem("orderData") !== null) {
+            return JSON.parse(localStorage.getItem("orderData")!)
         } else {
             return {
                 "tipInput": 0,
@@ -181,7 +180,6 @@ const Order = () => {
                 name: orderData["name"],
                 orderType: orderData["orderType"],
                 orderTime: orderData["orderTime"],
-                currentTime: new Date().toLocaleTimeString(),
                 email: orderData["email"]
             }
         })
@@ -267,9 +265,9 @@ const Order = () => {
 
     return (
         <>
-            {/*<Topbar/>*/}
+            <Topbar/>
             <div className="relative bg-sbeige flex justify-center">
-                <div className="mt-[6rem] bg-dcharcoal/20 p-4 rounded-lg w-full lg:w-2/3">
+                <div className="my-[6rem] bg-dcharcoal/20 p-4 rounded-lg w-full lg:w-2/3">
                     <h1 className="text-6xl font-playfair">Order</h1>
                     {mapMenuItems()}
                     <div className={clsx("mt-8", {"hidden": Object.keys(orderData["items"]).length === 0})}>
@@ -278,7 +276,7 @@ const Order = () => {
                     </div>
                 </div>
             </div>
-            {/*<Footer />*/}
+            <Footer />
         </>
     )
 }
