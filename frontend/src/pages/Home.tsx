@@ -1,16 +1,20 @@
 import Topbar from "../components/Topbar.tsx";
-import { useEffect, useState } from "react";
 import Footer from "../components/Footer.tsx";
-import { createPortal } from "react-dom";
 import Elements from "../components/Elements.tsx";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import logo from "../assets/images/olivedelights-logo.png"
+import homeGif from "../assets/gifs/homescreen.gif"
+
+import capreseSalad from "../assets/images/caprese salad.jpg"
+import pastaPrimavera from "../assets/images/Pasta-Primavera.jpg"
+import pomodoroPasta from "../assets/images/Pomodoropasta.png"
 
 const Home = () => {
     useEffect(() => {
         document.title = "Home";
     }, []);
 
-    const logo = "./src/assets/images/olivedelights-logo.png";
-    const imageSource = "./src/assets/gifs/homescreen.gif";
     const [showFullDescription, setShowFullDescription] = useState(false);
     const [showFullDescription1, setShowFullDescription1] = useState(false);
     const [showFullDescription2, setShowFullDescription2] = useState(false);
@@ -22,7 +26,7 @@ const Home = () => {
                 <div className="absolute w-full max-h-[96%] overflow-hidden aspect-video">
                     <img
                         className="z-0 absolute w-full object-cover"
-                        src={imageSource}
+                        src={homeGif}
                         alt="Yummy food"
                     />
                     <img
@@ -46,7 +50,7 @@ const Home = () => {
                     <div className="z-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="bg-white shadow-lg overflow-hidden card-shape-1">
                             <img
-                                src="./src/assets/images/caprese salad.jpg"
+                                src={capreseSalad}
                                 alt="Caprese Salad"
                                 className="w-full h-48 object-cover"
                             />
@@ -68,7 +72,7 @@ const Home = () => {
 
                         <div className="bg-white shadow-lg overflow-hidden card-shape-2">
                             <img
-                                src="./src/assets/images/Pasta-Primavera.jpg"
+                                src={pastaPrimavera}
                                 alt="Pasta Primavera"
                                 className="w-full h-48 object-cover"
                             />
@@ -90,7 +94,7 @@ const Home = () => {
 
                         <div className="bg-white shadow-lg overflow-hidden card-shape-3">
                             <img
-                                src="./src/assets/images/Pomodoropasta.png"
+                                src={pomodoroPasta}
                                 alt="Pomodoro Pasta"
                                 className="w-full h-48 object-cover"
                             />

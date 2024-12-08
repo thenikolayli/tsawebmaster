@@ -1,7 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
-// import reservationGif from "../assets/gifs/reservations.gif";
 import reservationGif from "../assets/gifs/Careers.gif"
 import axios from "axios";
 import Context from "../Utils/Context.tsx";

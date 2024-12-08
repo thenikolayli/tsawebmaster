@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Topbar from "../components/Topbar.tsx";
 import Footer from "../components/Footer.tsx";
 import workerGif from "../assets/gifs/Careers.gif";
-//hi
 
 const roles = [
     { title: "Chef", description: "As a chef, you will work with our team to craft delicious, plant-based dishes using fresh ingredients, ensuring that every dish meets our high standards.", key: 0 },

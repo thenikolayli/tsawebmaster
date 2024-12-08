@@ -14,7 +14,7 @@ interface args {
 
 const MenuItemCard = ({item, amount, description, imageSource, updateOrder, price, time}: args) => (
     <div
-        className="relative overflow-hidden rounded-lg shadow-lg px-2 pb-2 pt-1 border-t-sbeige border-t-2">
+        className="relative w-fit overflow-hidden rounded-lg shadow-lg px-2 pb-2 pt-1 border-t-sbeige border-t-2">
         <div className="static z-0 flex justify-between">
             <h1 className="text-2xl font-lato">{item}</h1>
             <div className="flex">

@@ -1,5 +1,8 @@
 import {useEffect} from 'react';
 import Topbar from '../components/Topbar.tsx';
+import riceSalad from "../assets/gifs/rice-salad.gif"
+import grapesFruits from "../assets/gifs/grapes-fruits.gif"
+import envFarm from "../assets/gifs/environmental-farm.gif"
 
 const AboutUs = () => {
     useEffect(() => {
@@ -10,19 +13,19 @@ const AboutUs = () => {
         {
             title: "Our Philosophy",
             text: "We believe in nourishing bodies and souls through the power of plant-based cuisine. Our culinary journey celebrates the diversity of flavors, textures, and colors found in nature, offering a compassionate and delicious dining experience.",
-            imageSource: "./src/assets/gifs/rice-salad.gif",
+            imageSource: riceSalad,
             key: 0
         },
         {
             title: "Farm to Table",
             text: "Committed to supporting local farmers and sustainable practices, we source the freshest, seasonal ingredients from our community. Our dishes highlight the natural beauty of plant-based foods, showcasing the vibrant flavors and nutritional benefits of each ingredient.",
-            imageSource: "./src/assets/gifs/grapes-fruits.gif",
+            imageSource: grapesFruits,
             key: 1
         },
         {
             title: "Sustainability",
             text: "We strive to minimize our environmental impact by reducing waste, conserving energy, and promoting ethical sourcing. By choosing sustainable practices, we aim to create a positive impact on the planet and inspire others to embrace a more conscious lifestyle.",
-            imageSource: "./src/assets/gifs/environmental-farm.gif",
+            imageSource: envFarm,
             key: 2
         },
     ];

@@ -1,15 +1,18 @@
+import {useEffect, useState} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {clsx} from "clsx";
+import {faDollarSign, faBasketShopping} from "@fortawesome/free-solid-svg-icons";
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import Topbar from "../components/Topbar.tsx";
 import Footer from "../components/Footer.tsx";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDollarSign, faBasketShopping} from "@fortawesome/free-solid-svg-icons";
-import {clsx} from "clsx";
 import MenuItemCard from "../components/order/MenuItemCard.tsx";
 import CostDisplay from "../components/order/CostDisplay.tsx";
+const images = import.meta.glob("../assets/images/menuImages/*.{png, webp, jpeg}")
 import Context from "../Utils/Context.tsx";
 
 const Order = () => {
+    const [imageSources, setImageSources] = useState<string[]>([])
     const [orderData, setOrderData] = useState<{[key: string]: any}>(() => {
         if (localStorage.getItem("orderData") !== null) {
             return JSON.parse(localStorage.getItem("orderData")!)
@@ -35,49 +38,42 @@ const Order = () => {
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
         },
         "item 2": {
             "category": "appetizers",
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
         },
         "item 3": {
             "category": "appetizers",
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
         },
         "item 4": {
             "category": "main",
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
         },
         "item 5": {
             "category": "main",
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
         },
         "item 6": {
             "category": "main",
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
         },
         "item 7": {
             "category": "main",
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
             "key": 6
         },
         "item 8": {
@@ -85,21 +81,18 @@ const Order = () => {
             "price": 20,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
         },
         "item 9": {
             "category": "desserts",
             "price": 10,
             "description": "food",
             "time": 14,
-            "src": "../assets/images/order/testImage.webp",
         },
         "item 10": {
             "category": "desserts",
             "price": 20,
             "description": "food",
-            "time": 1,
-            "src": "../assets/images/order/testImage.webp",
+            "time": 14,
         },
     }
 
@@ -114,15 +107,16 @@ const Order = () => {
         document.title = "Order"
 
         const loadImages = async () => {
-            const loadedImages: string[] = []
-            for (const item of Object.values(items)) {
-                const module = await import(item.src)
-                loadedImages.push(module.default)
+            let newImageSources = []
+
+            for (let image of Object.values(images)) {
+                const module: any = await image()
+                newImageSources.push(module.default)
             }
-            setImageSources(loadedImages)
+            setImageSources(newImageSources)
         }
 
-        loadImages().catch()
+        loadImages()
     }, [])
 
     useEffect(() => {
@@ -200,7 +194,6 @@ const Order = () => {
             setApiResponse(errorMessage);
         }
     }
-
 
     const mapMenuItems = () => {
         return (

@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import Topbar from "../components/Topbar.tsx";
 import Footer from "../components/Footer.tsx";
+import faqPage from "../assets/gifs/menuscreen.gif"
 
 const Faq = () => {
     useEffect(() => {
         document.title = "Faq"
     }, []);
-
-    const imageSource1 = "./src/assets/gifs/faq-page.gif"
 
     const faqData = [
         {
@@ -35,7 +34,7 @@ const Faq = () => {
                     />
                     <img
                         className="z-0 w-full max-h-[calc(100vh-20px)] object-cover pb-[50px]"
-                        src={imageSource1}
+                        src={faqPage}
                     />
                     <div className="bg-sbeige">
                             <div
