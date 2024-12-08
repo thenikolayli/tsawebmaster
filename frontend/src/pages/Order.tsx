@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {clsx} from "clsx";
 import {faDollarSign, faBasketShopping} from "@fortawesome/free-solid-svg-icons";
-import {useContext, useEffect, useState} from "react";
+import {useContext} from "react";
 import axios from "axios";
 import Topbar from "../components/Topbar.tsx";
 import Footer from "../components/Footer.tsx";
@@ -28,7 +28,6 @@ const Order = () => {
             }
         }
     })
-    const [imageSources, setImageSources] = useState<string[]>([])
     const {csrfToken} = useContext(Context);
     const [apiResponse, setApiResponse] = useState("")
 
