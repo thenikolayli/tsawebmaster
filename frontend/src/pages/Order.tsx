@@ -2,12 +2,14 @@ import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {clsx} from "clsx";
 import {faDollarSign, faBasketShopping} from "@fortawesome/free-solid-svg-icons";
+import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import Topbar from "../components/Topbar.tsx";
 import Footer from "../components/Footer.tsx";
 import MenuItemCard from "../components/order/MenuItemCard.tsx";
 import CostDisplay from "../components/order/CostDisplay.tsx";
 const images = import.meta.glob("../assets/images/menuImages/*.{png, webp, jpeg}")
+import Context from "../Utils/Context.tsx";
 
 const Order = () => {
     const [imageSources, setImageSources] = useState<string[]>([])
@@ -26,6 +28,9 @@ const Order = () => {
             }
         }
     })
+    const [imageSources, setImageSources] = useState<string[]>([])
+    const {csrfToken} = useContext(Context);
+    const [apiResponse, setApiResponse] = useState("")
 
     const items: { [key: string]: { [key: string]: any } } = {
         "item 1": {
@@ -159,23 +164,35 @@ const Order = () => {
     }
 
     const placeOrder = async () => {
-        const response = await axios({
-            method: "post",
-            url: "/api/placeorder/",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            data: {
-                items: orderData["items"],
-                total: orderData["total"],
-                tip: orderData["tipValue"],
-                name: orderData["name"],
-                orderType: orderData["orderType"],
-                orderTime: orderData["orderTime"],
-                email: orderData["email"]
+        try {
+            const response = await axios({
+                method: "POST",
+                url: "/api/placeorder/",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFTOKEN": csrfToken,
+                },
+                data: {
+                    items: orderData["items"],
+                    total: orderData["total"],
+                    tip: orderData["tipValue"],
+                    name: orderData["name"],
+                    orderType: orderData["orderType"],
+                    orderTime: orderData["orderTime"],
+                    email: orderData["email"]
+                }
+            })
+            console.log(response)
+            if (response.status === 200) {
+                setApiResponse("Order placed successfully!")
             }
-        })
-        console.log(response)
+        } catch (error: any) {
+            let errorMessage = "";
+            for (const specificError of Object.values(error.response.data.error) as string[]) {
+                errorMessage += specificError[0] + "\n"
+            }
+            setApiResponse(errorMessage);
+        }
     }
 
     const mapMenuItems = () => {
@@ -264,6 +281,7 @@ const Order = () => {
                     <div className={clsx("mt-8", {"hidden": Object.keys(orderData["items"]).length === 0})}>
                         {mapPickedItems()}
                         <button onClick={placeOrder} className="text-2xl font-playfair mt-2">Place order</button>
+                        <h1 className="text-md font-lato mt-2">{apiResponse}</h1>
                     </div>
                 </div>
             </div>

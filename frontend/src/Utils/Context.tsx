@@ -12,13 +12,13 @@ const ContextProvider = ({children}) => {
         const getToken = async () => {
             const response = await axios({
                 "method": "GET",
-                "url": "api/gettoken/",
+                "url": "/api/gettoken/",
             })
 
             setCsrfToken(response.data.token)
         }
 
-        getToken()
+        getToken().catch()
     }, []);
 
     let contextData = {
