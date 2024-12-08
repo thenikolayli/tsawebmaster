@@ -1,6 +1,8 @@
+import json
 from email.mime.multipart import MIMEMultipart
 from asgiref.sync import sync_to_async
 from rest_framework.decorators import api_view
+from adrf.decorators import api_view as async_api_view
 from rest_framework.response import Response
 from .serializers import CurrentOrderSerializer, PastOrderSerializer, CurrentReservationSerializer
 from .models import CurrentOrder, CurrentReservation
@@ -13,7 +15,7 @@ from datetime import datetime
 from django.middleware.csrf import get_token
 
 load_dotenv()
-delivery_wait_time = 3 # os.getenv("DELIVERY_WAIT_TIME") * 60
+delivery_wait_time = int(os.getenv("DELIVERY_WAIT_TIME")) * 60
 gmail_address = os.getenv("GMAIL_ADDRESS")
 gmail_password = os.getenv("GMAIL_PASSWORD")
 
@@ -37,7 +39,7 @@ def send_email(recipient, subject, body):
 sets a timer that waits for an order to be finished, then notifies the customer
 """
 async def set_timer(order_data):
-    order_wait_time = 3 # order_data["orderTime"] * 60 # order wait time in minutes
+    order_wait_time = order_data["orderTime"] # order wait time in minutes
     recipient_email = order_data['email']
     recipient_name = order_data['name']
     queue_position = order_data['queuePosition']
@@ -53,7 +55,7 @@ async def set_timer(order_data):
     message = message.replace("{queuePosition}", str(queue_position))
 
     send_email(recipient_email, "Your Order", message)
-    await asyncio.sleep(order_wait_time) # waits for order to be done
+    await asyncio.sleep(order_wait_time * 60 ) # waits for order to be done, converted to seconds
 
     if order_data["orderType"] == "delivery":
         with out_for_delivery_path.open("r") as email:
@@ -90,20 +92,21 @@ def get_csrf_token(request):
 api endpoint for placing an order for tracking, removes it after the order has been completed
 creates a current order and a past order
 """
-@api_view(['POST'])
-def placeorder(request):
+@async_api_view(["POST"])
+async def placeorder(request):
     current_serializer = CurrentOrderSerializer(data=request.data)
 
     if current_serializer.is_valid():
-        queue_position = CurrentOrder.objects.count() + 1
+        queue_position = await sync_to_async(CurrentOrder.objects.count)() + 1
         current_serializer.validated_data["queuePosition"] = queue_position
-        current_serializer.save()
+
+        await sync_to_async(current_serializer.save)()
         past_serializer = PastOrderSerializer(data=request.data)
 
         if past_serializer.is_valid():
-            past_serializer.save()
+            await sync_to_async(past_serializer.save)()
 
-        asyncio.run(set_timer(current_serializer.data))
+        asyncio.create_task(set_timer(current_serializer.data))
 
         return Response({"data": {"queuePosition": queue_position}}, status=200)
     return Response({"error": f"issue placing order {current_serializer.data['name']}"}, status=400)

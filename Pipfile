@@ -9,6 +9,8 @@ djangorestframework = "*"
 django-cors-headers = "*"
 python-dotenv = "*"
 pytz = "*"
+uvicorn = "*"
+adrf = "*"
 
 [dev-packages]
 
