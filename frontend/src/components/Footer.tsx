@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faInstagram, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/abranch.png";
 import { createPortal } from "react-dom";
+import { faFacebookF, faInstagram, faTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import logo from "../assets/images/abranch.png";
 
 const Footer = () => {
     return createPortal(
@@ -27,11 +27,6 @@ const Footer = () => {
                             className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg"
                         >
                             Home
-                        </Link>
-                        <Link
-                            to="/loco"
-                            className="text-xl font-lato text-sbeige transition duration-300 hover:text-white hover:shadow-lg">
-                            Locations
                         </Link>
                         <Link
                             to="/menu"

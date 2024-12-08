@@ -1,18 +1,30 @@
-import {useEffect} from "react";
-import Topbar from "../components/Topbar.tsx";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-// import {faArrowRight, faClock} from "@fortawesome/free-solid-svg-icons";
+import {useEffect, useState} from "react";
 import Footer from "../components/Footer.tsx";
+import Topbar from "../components/Topbar.tsx";
+import backgroundImage from "../assets/gifs/grilling-frying.gif"
+const images =  import.meta.glob("../assets/images/menuImages/*.{png, jpeg}")
+
+// note to aarav:
+// the image sources are dynamically loaded from the menuImages directory, and are all stored in a list accessed by
+// imageSources[index]
 
 const Menu = () => {
+    const [imageSources, setImageSources] = useState<string[]>([])
     useEffect(() => {
         document.title = "Menu"
-    }, []);
 
-    // const logo1 = "";
-    const imageSource1 = "./src/assets/gifs/tsa menu screen.gif"
-    // const fillerImage = "./src/assets/images/menuimages/fillerimage.jpeg"
+        const loadImages = async () => {
+            let newImageSources = []
+
+            for (let image of Object.values(images) as any) {
+                const module = await image()
+                newImageSources.push(module.default)
+            }
+            setImageSources(newImageSources)
+        }
+
+        loadImages()
+    }, []);
 
     return (
         <>
@@ -21,7 +33,7 @@ const Menu = () => {
                 <div className="absolute w-full overflow-hidden aspect-video">
                     <img
                         className="z-0 absolute w-full object-cover"
-                        src={imageSource1}
+                        src={backgroundImage}
                         alt="Yummy food"
                     />
                     {/*<img*/}
@@ -38,7 +50,7 @@ const Menu = () => {
                 <div className="columns-3 min-[300px]:max-lg:hidden">
                     <div className="transition duration-300 lg:hover:scale-110 ">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/capresesalad.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
                         <div className="px-10">
@@ -55,7 +67,7 @@ const Menu = () => {
 
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/pastaprimavera.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
 
@@ -73,7 +85,7 @@ const Menu = () => {
 
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/ricesalad.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
                         <div className="px-10 item">
@@ -91,7 +103,7 @@ const Menu = () => {
                 <div className="columns-2 lg:hidden">
                     <div className="transition duration-300 lg:hover:scale-110 ">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/capresesalad.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-10"/>
                         </div>
                         <div className="px-10">
@@ -103,7 +115,7 @@ const Menu = () => {
 
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/pastaprimavera.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-10"/>
                         </div>
 
@@ -119,7 +131,7 @@ const Menu = () => {
 
                 <div className="transition duration-300 lg:hover:scale-110 lg:hidden">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/ricesalad.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-20"/>
                     </div>
                     <div className="px-10 item">
@@ -134,7 +146,7 @@ const Menu = () => {
                 <div className="columns-3 min-[300px]:max-lg:hidden">
                     <div className="transition duration-300 lg:hover:scale-110">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/pestognocchi.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-20"/>
                     </div>
 
@@ -151,7 +163,7 @@ const Menu = () => {
                     </div>
                     <div className="transition duration-300 lg:hover:scale-110">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/arancini.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-20"/>
                     </div>
 
@@ -167,7 +179,7 @@ const Menu = () => {
 
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/raviolizucca.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
 
@@ -188,7 +200,7 @@ const Menu = () => {
                     {/*bottom row no pb*/}
                     <div className="transition duration-300 lg:hover:scale-110">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/Fagottini-di-verdure.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-20"/>
                     </div>
                     <div className="px-10">
@@ -203,7 +215,7 @@ const Menu = () => {
                     </div>
                     <div className="transition duration-300 lg:hover:scale-110">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/mushroompolenta.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-20"/>
                     </div>
 
@@ -219,7 +231,7 @@ const Menu = () => {
                     </div>
                     <div className="transition duration-300 lg:hover:scale-110">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/Frittelledizucchine.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-20"/>
                     </div>
                     <div className="px-10">
@@ -239,7 +251,7 @@ const Menu = () => {
                 <div className="columns-2 min-[300px]:max-lg:hidden">
                     <div className="transition duration-300 lg:hover:scale-110">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/panzanella.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 min-[300px]:max-lg:px-10 lg:px-20"/>
                     </div>
 
@@ -258,7 +270,7 @@ const Menu = () => {
                     </div>
                     <div className="transition duration-300 lg:hover:scale-110">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/funghirissoto.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 min-[300px]:max-lg:px-10 min-[300px]:max-lg:20"/>
                     </div>
                     <div className="px-10">
@@ -279,7 +291,7 @@ const Menu = () => {
 
                 <div className="columns-2 lg:hidden">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/pestognocchi.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-10"/>
                     </div>
 
@@ -289,7 +301,7 @@ const Menu = () => {
 
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/arancini.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-10"/>
                     </div>
 
@@ -306,7 +318,7 @@ const Menu = () => {
                     {/*bottom row no pb*/}
                     <div>
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/raviolizucca.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-10"/>
                         </div>
 
@@ -317,7 +329,7 @@ const Menu = () => {
                         </div>
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/Fagottini-di-verdure.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-10"/>
                     </div>
                     <div className="px-10">
@@ -330,7 +342,7 @@ const Menu = () => {
                 </div>
                 <div className="columns-2 lg:hidden">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/mushroompolenta.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-10"/>
                     </div>
 
@@ -340,7 +352,7 @@ const Menu = () => {
 
                     </div>
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/Frittelledizucchine.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 px-10"/>
                     </div>
                     <div className="px-10">
@@ -350,7 +362,7 @@ const Menu = () => {
                 </div>
                 <div className="columns-2 lg:hidden">
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/panzanella.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 min-[300px]:max-lg:px-10 lg:px-20"/>
                     </div>
 
@@ -368,7 +380,7 @@ const Menu = () => {
                     </div>
 
                     <div className="flex flex-col items-center">
-                        <img src={"./src/assets/images/menuimages/funghirissoto.png"} alt="Yummy food"
+                        <img src={imageSources[0]} alt="Yummy food"
                              className="mx-auto pt-5 pb-5 min-[300px]:max-lg:px-10 min-[300px]:max-lg:20"/>
                     </div>
                     <div className="px-10">
@@ -390,7 +402,7 @@ const Menu = () => {
                 <div className="columns-3 min-[300px]:max-lg:hidden">
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/milaneserissoto.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
                         <div className="px-10">
@@ -406,7 +418,7 @@ const Menu = () => {
                     </div>
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/lasagna.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
 
@@ -424,7 +436,7 @@ const Menu = () => {
 
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/caponata.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
 
@@ -446,7 +458,7 @@ const Menu = () => {
                     {/*bottom row no pb*/}
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/gorgonzolapolenta.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 min-[300px]:max-lg:px-10 lg:px-20"/>
                         </div>
 
@@ -468,7 +480,7 @@ const Menu = () => {
 
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/finocchisalad.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 min-[300px]:max-lg:px-10 lg:px-20"/>
                         </div>
                         <div className="px-10 item">
@@ -489,7 +501,7 @@ const Menu = () => {
                 </div>
                 <div className="columns-2 lg:hidden">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/milaneserissoto.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-10"/>
                         </div>
                         <div className="px-10">
@@ -498,7 +510,7 @@ const Menu = () => {
 
                         </div>
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/lasagna.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-10"/>
                         </div>
 
@@ -514,7 +526,7 @@ const Menu = () => {
                         {/*bottom row no pb*/}
                         <div>
                             <div className="flex flex-col items-center">
-                                <img src={"./src/assets/images/menuimages/caponata.png"} alt="Yummy food"
+                                <img src={imageSources[0]} alt="Yummy food"
                                      className="mx-auto pt-5 pb-5 px-10"/>
                             </div>
 
@@ -526,7 +538,7 @@ const Menu = () => {
                         </div>
 
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/gorgonzolapolenta.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-10"/>
                         </div>
 
@@ -545,7 +557,7 @@ const Menu = () => {
 
                     <div className="lg:hidden">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/finocchisalad.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
                         <div className="px-10 item">
@@ -569,7 +581,7 @@ const Menu = () => {
                 <div className="columns-3 min-[300px]:max-lg:hidden">
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/strawberrydesert.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
                         <div className="px-10">
@@ -584,7 +596,7 @@ const Menu = () => {
                     </div>
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/chocolatedesert.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
 
@@ -603,7 +615,7 @@ const Menu = () => {
 
                     <div className="transition duration-300 lg:hover:scale-110">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/vanilladesert.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
                         <div className="px-10 item">
@@ -621,7 +633,7 @@ const Menu = () => {
 
                 <div className="columns-2 lg:hidden">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/strawberrydesert.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-10"/>
                         </div>
                         <div className="px-10">
@@ -631,7 +643,7 @@ const Menu = () => {
 
                         </div>
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/chocolatedesert.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-10"/>
                         </div>
 
@@ -645,7 +657,7 @@ const Menu = () => {
                     </div>
                     <div className="lg:hidden">
                         <div className="flex flex-col items-center">
-                            <img src={"./src/assets/images/menuimages/vanilladesert.png"} alt="Yummy food"
+                            <img src={imageSources[0]} alt="Yummy food"
                                  className="mx-auto pt-5 pb-5 px-20"/>
                         </div>
                         <div className="px-10 item">

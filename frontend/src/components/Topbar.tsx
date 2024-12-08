@@ -1,8 +1,8 @@
 import { createPortal } from "react-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import {clsx} from "clsx";
+import {faBars, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const Topbar = () => {
     const [showSidebar, setShowSidebar] = useState(false);
