@@ -40,7 +40,7 @@ const Careers = () => {
         document.title = "Careers";
     }, []);
 
-    const scroll = (sectionId) => {
+    const scroll = (sectionId: string) => {
         const section = document.getElementById(sectionId);
         if (section) {
             window.scrollTo({

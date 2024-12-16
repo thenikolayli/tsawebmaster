@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:17.2-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    expose:
+      - 5432
+  uvicorn:
+    build:
+      context: .
+      args:
+        - ENV=.env
+    volumes:
+      - static_files:/backend/staticroot
+    env_file:
+      - .env
+    expose:
+      - 8000
+    depends_on:
+      - db
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_files:/backend/staticroot
+    ports:
+      - "80:80"
+    depends_on:
+      - uvicorn
+
+volumes:
+  postgres_data:
+  static_files:

@@ -40,6 +40,7 @@ const Reservations = () => {
 
     const placeReservation = async (event: any) => {
         event.preventDefault();
+        console.log(csrfToken);
         try {
             const response = await axios({
                 method: "POST",
@@ -67,6 +68,7 @@ const Reservations = () => {
                     "party_size": 0})
             }
         } catch (error: any) {
+            console.log(error)
             let errorMessage = "";
             for (const specificError of Object.values(error.response.data.error) as string[]) {
                 errorMessage += specificError[0] + "\n"

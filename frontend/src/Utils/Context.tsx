@@ -5,8 +5,8 @@ const ContextData = createContext(null);
 
 export default ContextData
 
-const ContextProvider = ({children}) => {
-    const [csrfToken, setCsrfToken] = useState();
+const ContextProvider = ({children}: {children: any}) => {
+    const [csrfToken, setCsrfToken] = useState(null);
 
     useEffect(() => {
         const getToken = async () => {
@@ -25,6 +25,7 @@ const ContextProvider = ({children}) => {
         csrfToken: csrfToken,
     }
 
+    // @ts-ignore
     return (
         <ContextData.Provider value={contextData} >
             {children}
