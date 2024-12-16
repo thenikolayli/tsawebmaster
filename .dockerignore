@@ -1,4 +1,3 @@
-.env
-backend/db.sqlite3
+frontend/node_modules
 backend/dist
 backend/staticroot

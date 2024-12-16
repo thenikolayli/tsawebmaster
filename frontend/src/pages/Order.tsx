@@ -169,7 +169,7 @@ const Order = () => {
                 url: "/api/placeorder/",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRFTOKEN": csrfToken,
+                    "X-CSRFToken": csrfToken,
                 },
                 data: {
                     items: orderData["items"],
@@ -186,6 +186,7 @@ const Order = () => {
                 setApiResponse("Order placed successfully!")
             }
         } catch (error: any) {
+            console.log(error)
             let errorMessage = "";
             for (const specificError of Object.values(error.response.data.error) as string[]) {
                 errorMessage += specificError[0] + "\n"
@@ -220,6 +221,7 @@ const Order = () => {
 
     const mapPickedItems = () => {
 
+        //@ts-ignore
         return (
             <>
                 <div className="flex mb-2">
@@ -232,11 +234,11 @@ const Order = () => {
                 <h1 className="text-2xl font-playfair">Your order includes</h1>
                 <table className="table-fixed w-1/4">
                     <tbody>
-                        {Object.entries(orderData["items"]).map((item, key) => (
+                        {Object.entries(orderData["items"]).map(([first, second], key) => (
                                 <tr key={key}>
-                                    <th className="text-lg font-lato w-1/4 text-left"><FontAwesomeIcon icon={faBasketShopping}/> {item[1]}</th>
-                                    <th className="text-lg font-lato w-1/3 text-left">{item[0]}</th>
-                                    <th className="text-lg font-lato w-1/3 text-left"><FontAwesomeIcon icon={faDollarSign}/>{item[1] * items[item[0]].price}</th>
+                                    <th className="text-lg font-lato w-1/4 text-left"><FontAwesomeIcon icon={faBasketShopping}/> {second}</th>
+                                    <th className="text-lg font-lato w-1/3 text-left">{first}</th>
+                                    <th className="text-lg font-lato w-1/3 text-left"><FontAwesomeIcon icon={faDollarSign}/>{second * items[first].price}</th>
                                 </tr>
                         ))}
                     </tbody>
